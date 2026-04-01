@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  /* ===== COULEURS — ZDEPANNAGE ===== */
+
+  /* Bleu (confiance, professionnel) */
+  --color-navy-deep: #0F1B2D;
+  --color-navy: #1B2E4A;
+  --color-blue-700: #1D4ED8;
+  --color-blue-600: #1E40AF;
+  --color-blue-500: #3B82F6;
+  --color-blue-100: #DBEAFE;
+  --color-blue-50: #EFF6FF;
+
+  /* Orange (urgence, signal, action) */
+  --color-orange-700: #C2410C;
+  --color-orange-600: #EA580C;
+  --color-orange-500: #F97316;
+  --color-orange-200: #FED7AA;
+  --color-orange-50: #FFF7ED;
+
+  /* Neutres */
+  --color-slate-900: #0F172A;
+  --color-slate-700: #334155;
+  --color-slate-500: #64748B;
+  --color-slate-300: #CBD5E1;
+  --color-slate-100: #F1F5F9;
+
+  /* Sémantiques */
+  --color-success: #16A34A;
+  --color-warning: #EAB308;
+  --color-error: #DC2626;
+
+  /* ===== FONTS ===== */
+  --font-heading: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* ===== SHADOWS ===== */
+  --shadow-sm: 0 1px 3px rgba(15, 27, 45, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 27, 45, 0.08);
+  --shadow-lg: 0 8px 24px rgba(15, 27, 45, 0.12);
+  --shadow-xl: 0 16px 48px rgba(15, 27, 45, 0.15);
+  --shadow-orange: 0 10px 40px rgba(234, 88, 12, 0.25);
+}
+
+/* ===== THEME ===== */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #F1F5F9;
+  --bg-card: #ffffff;
+  --bg-dark: #0F1B2D;
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-tertiary: #64748B;
+  --text-on-dark: #ffffff;
+  --text-on-dark-muted: rgba(255,255,255,0.7);
+  --border-default: #E2E8F0;
+  --primary: #1E40AF;
+  --primary-hover: #1D4ED8;
+  --accent: #EA580C;
+  --accent-hover: #C2410C;
+  --accent-bright: #F97316;
+  --gradient-hero: linear-gradient(135deg, #0F1B2D 0%, #1E3A5F 50%, #1B2E4A 100%);
+  --gradient-cta: linear-gradient(135deg, #EA580C 0%, #F97316 100%);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== UTILITIES ===== */
+.font-heading { font-family: "Plus Jakarta Sans", system-ui, sans-serif; }
+
+.gradient-hero { background: var(--gradient-hero); }
+.gradient-cta { background: var(--gradient-cta); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes phoneRing {
+  0%, 100% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-10deg); }
+  30% { transform: rotate(8deg); }
+  40% { transform: rotate(-6deg); }
+  50%, 100% { transform: rotate(0deg); }
+}
+
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(234, 88, 12, 0); }
+}
+
+.reveal { opacity: 0; transform: translateY(24px); }
+.reveal.visible { animation: fadeInUp 0.6s ease forwards; }
+.reveal-stagger > .reveal.visible:nth-child(1) { animation-delay: 0ms; }
+.reveal-stagger > .reveal.visible:nth-child(2) { animation-delay: 100ms; }
+.reveal-stagger > .reveal.visible:nth-child(3) { animation-delay: 200ms; }
+.reveal-stagger > .reveal.visible:nth-child(4) { animation-delay: 300ms; }
+
+.animate-phone-ring { animation: phoneRing 2s ease-in-out infinite; }
+.animate-cta-pulse { animation: ctaPulse 3s ease-in-out infinite; }
+
+.card-hover { transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent-bright); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .card-hover:hover { transform: none; }
+}
