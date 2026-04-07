@@ -76,8 +76,7 @@ export default function LeafletMap({
 }: LeafletMapProps) {
   return (
     <div
-      className="rounded-2xl overflow-hidden border border-[var(--border-default)] shadow-sm"
-      style={{ height }}
+      style={{ height, width: '100%' }}
       role="region"
       aria-label={ariaLabel}
     >

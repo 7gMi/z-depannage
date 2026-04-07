@@ -41,15 +41,17 @@ export function ContactPage({ phoneDisplay, phoneLink }: ContactPageProps) {
 
       <section className="py-12 sm:py-16 bg-[var(--bg-secondary)]">
         <div className="max-w-4xl mx-auto px-4">
-          <Suspense fallback={<div className="h-[320px] rounded-2xl bg-[var(--bg-card)] animate-pulse" />}>
-            <LeafletMap
-              center={GRIGNY}
-              zoom={14}
-              height="320px"
-              popupText="ZDEPANNAGE — 7 BIS Route de Corbeil, 91350 Grigny"
-              ariaLabel="Carte de localisation du dépôt à Grigny"
-            />
-          </Suspense>
+          <div style={{ height: '320px', contain: 'layout size' }} className="rounded-2xl overflow-hidden border border-[var(--border-default)] shadow-sm">
+            <Suspense fallback={<div className="h-full bg-[var(--bg-card)] animate-pulse" />}>
+              <LeafletMap
+                center={GRIGNY}
+                zoom={14}
+                height="100%"
+                popupText="ZDEPANNAGE — 7 BIS Route de Corbeil, 91350 Grigny"
+                ariaLabel="Carte de localisation du dépôt à Grigny"
+              />
+            </Suspense>
+          </div>
         </div>
       </section>
     </>
