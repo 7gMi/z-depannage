@@ -152,7 +152,12 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
             </nav>
 
             {/* Centre — logo */}
-            <Link to="/" className="flex items-center justify-center group mx-6 flex-shrink-0">
+            <Link
+              to="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center justify-center group mx-6 flex-shrink-0"
+              aria-label="ZDEPANNAGE — Accueil"
+            >
               <img
                 src="/logo-zdepannage.png"
                 alt="ZDEPANNAGE"
@@ -189,7 +194,12 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
 
           {/* Tablet/Mobile navbar */}
           <div className="lg:hidden flex items-center justify-between h-16">
-            <Link to="/" className="flex items-center">
+            <Link
+              to="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center"
+              aria-label="ZDEPANNAGE — Accueil"
+            >
               <img
                 src="/logo-zdepannage.png"
                 alt="ZDEPANNAGE"
