@@ -250,7 +250,16 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
       >
         <div className="h-1 w-full" style={{ background: 'var(--gradient-cta)' }} />
         <div className="flex items-center justify-between px-5 py-4">
-          <img src="/logo-zdepannage.png" alt="ZDEPANNAGE" className="h-10 w-auto brightness-0 invert opacity-90" />
+          <Link
+            to="/"
+            onClick={() => {
+              setIsOpen(false);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            aria-label="ZDEPANNAGE — Accueil"
+          >
+            <img src="/logo-zdepannage.png" alt="ZDEPANNAGE" width={192} height={192} className="h-10 w-auto brightness-0 invert opacity-90" />
+          </Link>
           <button onClick={() => setIsOpen(false)} className="p-2 text-white" aria-label={t('aria.closeMenu')}>
             <X size={22} />
           </button>
