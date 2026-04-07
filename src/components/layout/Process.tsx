@@ -127,6 +127,19 @@ export function Process() {
                 }}
               />
             </div>
+            {/* Trail lumineux derrière le camion */}
+            <div
+              className="absolute top-1/2 -translate-y-1/2 h-3 rounded-full ease-out pointer-events-none"
+              style={{
+                transitionProperty: 'width',
+                transitionDuration: `${currentDuration}ms`,
+                transitionTimingFunction: 'ease-out',
+                left: '0',
+                width: `calc(${currentPos}% - 20px)`,
+                background: 'linear-gradient(90deg, transparent 0%, rgba(234,88,12,0.15) 30%, rgba(234,88,12,0.55) 80%, rgba(255,165,0,0.9) 100%)',
+                filter: 'blur(8px)',
+              }}
+            />
             <div
               className="absolute -top-4 z-20 ease-out"
               style={{
@@ -136,7 +149,13 @@ export function Process() {
                 left: `calc(${currentPos}% - 50px)`,
               }}
             >
-              <img src="/logo-zdepannage.png" alt="ZDEPANNAGE en route" className="h-24 w-auto brightness-0 invert drop-shadow-[0_4px_12px_rgba(234,88,12,0.3)]" />
+              <img src="/logo-zdepannage.png" alt="ZDEPANNAGE en route" className="h-24 w-auto brightness-0 invert drop-shadow-[0_4px_16px_rgba(234,88,12,0.6)]" />
+              {/* Étincelles sous le camion */}
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                <span className="w-1 h-1 rounded-full bg-orange-400 animate-ping" />
+                <span className="w-1 h-1 rounded-full bg-yellow-300 animate-ping" style={{ animationDelay: '200ms' }} />
+                <span className="w-1 h-1 rounded-full bg-orange-400 animate-ping" style={{ animationDelay: '400ms' }} />
+              </div>
             </div>
           </div>
         </div>

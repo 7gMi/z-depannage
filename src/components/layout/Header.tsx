@@ -242,54 +242,62 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
           </button>
         </div>
 
-        <nav className="px-4 flex flex-col gap-1">
-          {NAV_ALL.map(({ href, key }) => (
-            <Link
-              key={href}
-              to={href}
-              onClick={() => setIsOpen(false)}
-              className={`px-4 py-3 rounded-xl font-medium transition-colors ${
-                location.pathname === href
-                  ? 'text-[var(--accent-bright)] bg-white/5'
-                  : 'text-white/80 hover:bg-white/5'
-              }`}
-            >
-              {t(key)}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Langues dans le drawer */}
-        <div className="px-5 mt-6">
-          <p className="text-xs text-white/40 uppercase tracking-wider font-medium mb-3">Langue</p>
-          <div className="flex flex-col gap-1">
-            {LANGUAGES.map(({ code, Flag, label }) => (
-              <button
-                key={code}
-                onClick={() => setLang(code)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                  lang === code
-                    ? 'bg-[var(--primary)]/15 text-white'
-                    : 'text-white/50 hover:text-white/80 hover:bg-white/5'
-                }`}
+        {isOpen && (
+          <div className="drawer-stagger">
+            {/* CTA appel géant en haut */}
+            <div className="px-5 mt-2 mb-4">
+              <a
+                href={phoneLink}
+                className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl text-white font-heading font-extrabold text-lg shadow-lg"
+                style={{ background: 'var(--gradient-cta)', boxShadow: '0 0 24px rgba(234,88,12,0.5)' }}
               >
-                <Flag size={22} />
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
+                <Phone size={22} className="animate-phone-ring" />
+                <div className="flex flex-col items-start leading-tight">
+                  <span className="text-xs font-medium opacity-90">{t('aria.call')}</span>
+                  <span>{phoneDisplay}</span>
+                </div>
+              </a>
+            </div>
 
-        <div className="px-5 mt-6">
-          <a
-            href={phoneLink}
-            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl text-white font-heading font-bold text-lg animate-cta-pulse"
-            style={{ background: 'var(--gradient-cta)' }}
-          >
-            <Phone size={20} />
-            {phoneDisplay}
-          </a>
-        </div>
+            <nav className="px-4 flex flex-col gap-1">
+              {NAV_ALL.map(({ href, key }) => (
+                <Link
+                  key={href}
+                  to={href}
+                  onClick={() => setIsOpen(false)}
+                  className={`px-4 py-3 rounded-xl font-bold text-base uppercase tracking-wide transition-colors ${
+                    location.pathname === href
+                      ? 'text-[var(--accent-bright)] bg-white/5'
+                      : 'text-white/80 hover:bg-white/5'
+                  }`}
+                >
+                  {t(key)}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Langues en grille 2x2 */}
+            <div className="px-5 mt-6">
+              <p className="text-xs text-white/40 uppercase tracking-wider font-medium mb-3">{t('aria.lang')}</p>
+              <div className="grid grid-cols-2 gap-2 bg-white/5 rounded-2xl p-3">
+                {LANGUAGES.map(({ code, Flag, label }) => (
+                  <button
+                    key={code}
+                    onClick={() => setLang(code)}
+                    className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                      lang === code
+                        ? 'bg-[var(--primary)]/20 text-white ring-2 ring-[var(--accent)]'
+                        : 'text-white/60 hover:bg-white/5'
+                    }`}
+                  >
+                    <Flag size={20} />
+                    <span className="truncate">{label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

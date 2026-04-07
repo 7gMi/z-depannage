@@ -3,24 +3,50 @@ import { useCountUp } from '../../hooks/useCountUp';
 import { useT } from '../../i18n/LanguageContext';
 
 const STATS = [
-  { icon: Calendar, value: 5, suffix: '+', labelKey: 'stats.years' },
-  { icon: MapPin, value: 8, suffix: '', labelKey: 'stats.departments' },
-  { icon: Truck, value: 3, suffix: '', labelKey: 'stats.vehicles' },
-  { icon: Users, value: 4, suffix: '', labelKey: 'stats.team' },
+  { icon: Calendar, value: 5, max: 10, suffix: '+', labelKey: 'stats.years' },
+  { icon: MapPin, value: 8, max: 8, suffix: '', labelKey: 'stats.departments' },
+  { icon: Truck, value: 3, max: 5, suffix: '', labelKey: 'stats.vehicles' },
+  { icon: Users, value: 4, max: 8, suffix: '', labelKey: 'stats.team' },
 ];
 
-function StatItem({ icon: Icon, value, suffix, labelKey }: typeof STATS[number]) {
+function StatItem({ icon: Icon, value, max, suffix, labelKey }: typeof STATS[number]) {
   const { count, ref } = useCountUp(value);
   const { t } = useT();
+  const radius = 50;
+  const circumference = 2 * Math.PI * radius;
+  const progress = (count / max) * circumference;
 
   return (
     <div ref={ref} className="flex flex-col items-center text-center px-4">
-      <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 bg-[var(--accent)]/10 border border-[var(--accent)]/20">
-        <Icon size={24} className="text-[var(--accent-bright)]" />
+      <div className="relative w-32 h-32 mb-3">
+        <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r={radius} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="6" />
+          <circle
+            cx="60"
+            cy="60"
+            r={radius}
+            fill="none"
+            stroke="url(#statGradient)"
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={circumference - progress}
+            style={{ transition: 'stroke-dashoffset 1.5s ease-out' }}
+          />
+          <defs>
+            <linearGradient id="statGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#EA580C" />
+              <stop offset="100%" stopColor="#FDBA74" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <Icon size={20} className="text-[var(--accent-bright)] mb-1" />
+          <span className="font-heading text-2xl sm:text-3xl font-extrabold text-white">
+            {count}{suffix}
+          </span>
+        </div>
       </div>
-      <span className="font-heading text-4xl sm:text-5xl font-extrabold text-white mb-1">
-        {count}{suffix}
-      </span>
       <span className="text-white/50 text-sm font-medium">{t(labelKey)}</span>
     </div>
   );

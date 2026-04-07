@@ -91,7 +91,7 @@ export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneL
         </button>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 text-center md:text-left md:max-w-3xl">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 text-center md:text-start md:max-w-3xl">
         <div className="inline-flex items-center gap-2 bg-[var(--accent)]/10 border border-[var(--accent)]/30 rounded-full px-4 py-2 mb-8 animate-[fadeInUp_0.6s_ease_0.2s_both]">
           <span className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent-bright)] opacity-75" />
@@ -112,7 +112,7 @@ export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneL
           {t('hero.subtitle')}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 items-center md:items-start animate-[fadeInUp_0.6s_ease_0.8s_both]">
+        <div className="flex flex-col sm:flex-row gap-4 items-center md:items-stretch animate-[fadeInUp_0.6s_ease_0.8s_both]">
           <a
             href={phoneLink}
             className="group inline-flex items-center gap-3 text-white font-heading font-extrabold text-xl md:text-2xl px-8 py-5 rounded-2xl animate-cta-pulse transition-all duration-200 hover:-translate-y-0.5"

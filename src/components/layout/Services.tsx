@@ -1,5 +1,25 @@
 import { Truck, Wrench, Car, AlertTriangle, Bike, Warehouse } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
+import { useTilt } from '../../hooks/useTilt';
+
+function ServiceCard({ Icon, titleKey, descKey }: { Icon: typeof Truck; titleKey: string; descKey: string }) {
+  const { t } = useT();
+  const { ref, handleMouseMove, handleMouseLeave } = useTilt(6);
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="reveal tilt-3d card-hover bg-[var(--bg-card)] rounded-2xl border border-[var(--border-default)] p-6"
+    >
+      <div className="w-14 h-14 rounded-xl mb-4 flex items-center justify-center bg-[var(--primary)]/8">
+        <Icon size={28} className="text-[var(--primary)]" />
+      </div>
+      <h3 className="font-heading font-bold text-lg mb-2">{t(titleKey)}</h3>
+      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{t(descKey)}</p>
+    </div>
+  );
+}
 
 const SERVICES_KEYS = [
   { icon: Truck, titleKey: 'services.towing.title', descKey: 'services.towing.desc' },
@@ -25,13 +45,7 @@ export function Services({ limit }: { limit?: number } = {}) {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
           {items.map(({ icon: Icon, titleKey, descKey }) => (
-            <div key={titleKey} className="reveal card-hover bg-[var(--bg-card)] rounded-2xl border border-[var(--border-default)] p-6">
-              <div className="w-14 h-14 rounded-xl mb-4 flex items-center justify-center bg-[var(--primary)]/8">
-                <Icon size={28} className="text-[var(--primary)]" />
-              </div>
-              <h3 className="font-heading font-bold text-lg mb-2">{t(titleKey)}</h3>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{t(descKey)}</p>
-            </div>
+            <ServiceCard key={titleKey} Icon={Icon} titleKey={titleKey} descKey={descKey} />
           ))}
         </div>
       </div>

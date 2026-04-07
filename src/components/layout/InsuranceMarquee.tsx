@@ -23,13 +23,13 @@ export function InsuranceMarquee() {
       </div>
 
       <div className="overflow-hidden">
-        <div className="animate-marquee flex items-center whitespace-nowrap">
+        <div className="marquee-focus-group animate-marquee flex items-center whitespace-nowrap">
           {repeated.map((name, i) => (
             <img
               key={`${name}-${i}`}
               src={`/logos/${name}.png`}
               alt={name.replace(/-/g, ' ')}
-              className="h-14 w-auto mx-6 rounded-lg flex-shrink-0"
+              className="marquee-focus-item h-14 w-auto mx-6 rounded-lg flex-shrink-0"
               loading="lazy"
             />
           ))}
