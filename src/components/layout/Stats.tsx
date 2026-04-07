@@ -42,7 +42,7 @@ function StatItem({ icon: Icon, value, max, suffix, labelKey }: typeof STATS[num
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <Icon size={20} className="text-[var(--accent-bright)] mb-1" />
-          <span className="font-heading text-2xl sm:text-3xl font-extrabold text-white">
+          <span className="font-heading text-2xl sm:text-3xl font-extrabold text-white tabular-nums">
             {count}{suffix}
           </span>
         </div>

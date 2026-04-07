@@ -29,6 +29,8 @@ export function InsuranceMarquee() {
               key={`${name}-${i}`}
               src={`/logos/${name}.png`}
               alt={name.replace(/-/g, ' ')}
+              width={120}
+              height={56}
               className="marquee-focus-item h-14 w-auto mx-6 rounded-lg flex-shrink-0"
               loading="lazy"
             />

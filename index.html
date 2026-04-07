@@ -6,8 +6,7 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#1E40AF" />
 
-    <!-- Preload LCP image hero (AVIF priorité) -->
-    <link rel="preload" as="image" href="/hero/2.avif" type="image/avif" fetchpriority="high" />
+    <!-- Hero image preload géré via fetchPriority dans Hero.tsx (évite warning sur /contact /zone etc.) -->
 
     <!-- Preconnect tiles OSM -->
     <link rel="dns-prefetch" href="https://a.tile.openstreetmap.org" />
