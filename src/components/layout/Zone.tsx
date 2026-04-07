@@ -81,13 +81,13 @@ export function Zone({ compact }: { compact?: boolean } = {}) {
               }`}
             >
               <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-heading font-extrabold text-sm ${
-                highlight ? 'bg-[var(--accent)]/10 text-[var(--accent)]' : 'bg-[var(--primary)]/8 text-[var(--primary)]'
+                highlight ? 'bg-[var(--accent)]/15 text-[var(--accent-hover)]' : 'bg-[var(--primary)]/10 text-[var(--primary)]'
               }`}>
                 {code}
               </div>
               <div>
                 <p className="font-semibold text-sm text-[var(--text-primary)]">{name}</p>
-                {highlight && <span className="text-[10px] font-bold text-[var(--accent)] uppercase tracking-wider">Base</span>}
+                {highlight && <span className="text-[10px] font-bold text-[var(--accent-hover)] uppercase tracking-wider">Base</span>}
               </div>
             </button>
           ))}

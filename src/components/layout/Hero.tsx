@@ -71,12 +71,18 @@ export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneL
             key={i}
             role="tab"
             aria-selected={current === i}
+            tabIndex={current === i ? 0 : -1}
             onClick={() => setCurrent(i)}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              current === i ? 'w-8 bg-[var(--accent)]' : 'w-3 bg-white/20 hover:bg-white/40'
-            }`}
+            className="relative flex items-center justify-center min-w-[44px] min-h-[44px]"
             aria-label={`Slide ${i + 1}`}
-          />
+          >
+            <span
+              aria-hidden="true"
+              className={`block h-1.5 rounded-full transition-all duration-500 ${
+                current === i ? 'w-8 bg-[var(--accent)]' : 'w-3 bg-white/40 hover:bg-white/70'
+              }`}
+            />
+          </button>
         ))}
         <button
           onClick={() => setPaused(!paused)}

@@ -22,7 +22,7 @@ export function Features() {
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 bg-[var(--accent)]/8">
                 <Icon size={28} className="text-[var(--accent)]" />
               </div>
-              <h3 className="font-heading font-bold text-lg mb-2">{t(titleKey)}</h3>
+              <h2 className="font-heading font-bold text-lg mb-2">{t(titleKey)}</h2>
               <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{t(descKey)}</p>
             </div>
           ))}
