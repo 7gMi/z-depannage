@@ -120,22 +120,19 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
 
   return (
     <>
-      {/* Bandeau "Disponible maintenant" */}
-      <div className="bg-gradient-to-r from-[#16a34a] via-[#22c55e] to-[#16a34a] text-white text-xs sm:text-sm font-semibold py-1.5 px-4 flex items-center justify-center gap-2">
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white" />
-        </span>
-        <span className="whitespace-nowrap">{t('header.available')}</span>
-        <span className="hidden sm:inline opacity-80">•</span>
-        <span className="hidden sm:inline">{t('header.intervention')}</span>
-      </div>
       <header className="sticky top-0 z-50 bg-[var(--bg-dark)]/40 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4">
           {/* Desktop navbar */}
           <div className="hidden lg:flex items-center justify-between h-28">
-            {/* Gauche — liens nav */}
+            {/* Gauche — liens nav + indicateur dispo */}
             <nav className="flex items-center gap-3 flex-1">
+              <span className="flex items-center gap-1.5 text-xs text-green-400 opacity-60 whitespace-nowrap mr-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+                </span>
+                {t('header.available')}
+              </span>
               {NAV_LEFT.map(({ href, key }) => (
                 <Link
                   key={href}
@@ -197,7 +194,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
             <Link
               to="/"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center"
+              className="flex items-center gap-2"
               aria-label="ZDEPANNAGE — Accueil"
             >
               <img
@@ -207,6 +204,13 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                 height={192}
                 className="h-12 w-auto brightness-0 invert opacity-90"
               />
+              <span className="flex items-center gap-1 text-[10px] text-green-400 opacity-60 whitespace-nowrap">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-400" />
+                </span>
+                {t('header.available')}
+              </span>
             </Link>
 
             <div className="flex items-center gap-3">
