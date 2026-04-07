@@ -36,7 +36,7 @@ export function Contact({ phoneDisplay, phoneLink }: { phoneDisplay: string; pho
               <Clock size={24} className="text-green-500" />
             </div>
             <h3 className="font-heading font-bold text-lg mb-1">{t('contact.hours')}</h3>
-            <p className="text-green-600 font-bold">{t('contact.open')}</p>
+            <p className="text-green-700 font-bold">{t('contact.open')}</p>
             <p className="text-[var(--text-tertiary)] text-xs mt-1">{t('contact.everyday')}</p>
           </div>
         </div>
