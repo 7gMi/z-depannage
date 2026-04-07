@@ -121,6 +121,9 @@ body {
 .reveal-stagger > .reveal.visible:nth-child(7) { animation-delay: 600ms; }
 .reveal-stagger > .reveal.visible:nth-child(8) { animation-delay: 700ms; }
 
+/* CLS fix : font-display swap + system font fallback metrics matching */
+html { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size-adjust: 0.5; }
+
 .animate-phone-ring { animation: phoneRing 2s ease-in-out infinite; }
 .animate-cta-pulse { animation: ctaPulse 3s ease-in-out infinite; }
 

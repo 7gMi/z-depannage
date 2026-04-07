@@ -34,7 +34,7 @@ export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneL
 
   return (
     <section
-      className="hero-spotlight relative min-h-[90vh] flex items-center overflow-hidden"
+      className="hero-spotlight relative h-[90vh] min-h-[600px] flex items-center overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       {SLIDES.map((slide, i) => (

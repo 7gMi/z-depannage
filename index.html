@@ -11,6 +11,16 @@
 
     <!-- Preconnect tiles OSM -->
     <link rel="dns-prefetch" href="https://a.tile.openstreetmap.org" />
+
+    <!-- CLS fix : reserve space pour le hero avant React mount -->
+    <style>
+      #root:empty::before {
+        content: '';
+        display: block;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0F1B2D 0%, #1B3A5C 50%, #0F1B2D 100%);
+      }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZDEPANNAGE — Dépannage & Remorquage 24h/24 | Île-de-France</title>
     <meta name="description" content="Service de dépannage et remorquage automobile 24h/24, 7j/7 en Île-de-France. Intervention rapide en 30 minutes. Agréé assurances et forces de l'ordre. Appelez le 07 56 97 36 86." />
