@@ -1,0 +1,27 @@
+{
+  "name": "ZDEPANNAGE — Dépannage & Remorquage 24h/24",
+  "short_name": "ZDEPANNAGE",
+  "description": "Service de dépannage et remorquage automobile 24h/24, 7j/7 en Île-de-France.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0F1B2D",
+  "theme_color": "#1E40AF",
+  "lang": "fr",
+  "categories": ["business", "travel", "utilities"],
+  "icons": [
+    {
+      "src": "/logo-zdepannage.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
