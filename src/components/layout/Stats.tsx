@@ -47,7 +47,7 @@ function StatItem({ icon: Icon, value, max, suffix, labelKey }: typeof STATS[num
           </span>
         </div>
       </div>
-      <span className="text-white/50 text-sm font-medium">{t(labelKey)}</span>
+      <span className="text-white/65 text-sm font-medium">{t(labelKey)}</span>
     </div>
   );
 }

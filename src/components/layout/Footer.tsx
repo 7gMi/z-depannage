@@ -39,13 +39,13 @@ export function Footer({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
             </div>
           </div>
         </div>
-        <div className="border-t border-white/10 pt-6 text-center text-xs text-white/40">
+        <div className="border-t border-white/10 pt-6 text-center text-xs text-white/60">
           {t('footer.rights')}
         </div>
         <div className="border-t border-white/5 mt-4 pt-4">
-          <a href="https://mihaigaina.dev" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-2 text-xs text-white/30 hover:text-white/50 transition-colors">
+          <a href="https://mihaigaina.dev" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-2 text-xs text-white/60 hover:text-white/65 transition-colors">
             <span className="inline-block h-px w-6 bg-white/20 transition-all duration-300 group-hover:w-12 group-hover:bg-[var(--accent-bright)]" />
-            <span>Designed by <span className="font-medium text-white/40 group-hover:text-[var(--accent-bright)] transition-colors">Mihai Gaina</span></span>
+            <span>Designed by <span className="font-medium text-white/60 group-hover:text-[var(--accent-bright)] transition-colors">Mihai Gaina</span></span>
             <span className="group-hover:translate-x-0.5 transition-transform">&rarr;</span>
             <span className="inline-block h-px w-6 bg-white/20 transition-all duration-300 group-hover:w-12 group-hover:bg-[var(--accent-bright)]" />
           </a>

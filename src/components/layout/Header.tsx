@@ -49,7 +49,7 @@ function LangDropdown({ activeLang, onChangeLang }: { activeLang: Lang; onChange
       >
         <current.Flag size={22} />
         <span>{current.code.toUpperCase()}</span>
-        <ChevronDown size={14} className={`text-white/50 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown size={14} className={`text-white/65 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
       </button>
 
       {open && (
@@ -278,7 +278,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
 
             {/* Langues en grille 2x2 */}
             <div className="px-5 mt-6">
-              <p className="text-xs text-white/40 uppercase tracking-wider font-medium mb-3">{t('aria.lang')}</p>
+              <p className="text-xs text-white/60 uppercase tracking-wider font-medium mb-3">{t('aria.lang')}</p>
               <div className="grid grid-cols-2 gap-2 bg-white/5 rounded-2xl p-3">
                 {LANGUAGES.map(({ code, Flag, label }) => (
                   <button

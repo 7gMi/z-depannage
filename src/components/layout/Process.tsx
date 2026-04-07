@@ -90,13 +90,13 @@ export function Process() {
                     ? 'bg-[var(--accent)]/15 border border-[var(--accent)]/30 shadow-[0_0_20px_rgba(234,88,12,0.15)]'
                     : 'bg-white/5 border border-white/10'
                 }`}>
-                  <Icon size={28} className={`transition-colors duration-500 ${i <= activeStep ? 'text-[var(--accent-bright)]' : 'text-white/40'}`} />
+                  <Icon size={28} className={`transition-colors duration-500 ${i <= activeStep ? 'text-[var(--accent-bright)]' : 'text-white/60'}`} />
                 </div>
-                <span className={`text-xs font-bold mb-2 transition-colors duration-500 ${i <= activeStep ? 'text-[var(--accent)]' : 'text-white/20'}`}>
+                <span className={`text-xs font-bold mb-2 transition-colors duration-500 ${i <= activeStep ? 'text-[var(--accent)]' : 'text-white/60'}`}>
                   ÉTAPE {step}
                 </span>
-                <h3 className={`font-heading font-bold text-lg mb-2 transition-colors duration-500 ${i <= activeStep ? 'text-white' : 'text-white/40'}`}>{t(titleKey)}</h3>
-                <p className={`text-sm leading-relaxed transition-colors duration-500 ${i <= activeStep ? 'text-white/60' : 'text-white/25'}`}>{t(descKey)}</p>
+                <h3 className={`font-heading font-bold text-lg mb-2 transition-colors duration-500 ${i <= activeStep ? 'text-white' : 'text-white/60'}`}>{t(titleKey)}</h3>
+                <p className={`text-sm leading-relaxed transition-colors duration-500 ${i <= activeStep ? 'text-white/60' : 'text-white/60'}`}>{t(descKey)}</p>
                 <div className={`w-[2px] h-8 mt-4 transition-all duration-500 ${i <= activeStep ? 'bg-gradient-to-b from-[var(--accent)]/50 to-transparent' : 'bg-white/10'}`} />
                 <div className={`w-3 h-3 rounded-full border-2 transition-all duration-500 ${
                   i <= activeStep ? 'bg-[var(--accent)] border-[var(--accent)] shadow-[0_0_10px_rgba(234,88,12,0.6)]' : 'bg-[var(--bg-dark)] border-white/20'
@@ -173,7 +173,7 @@ export function Process() {
               <div className="pb-6">
                 <span className="text-xs font-bold text-[var(--accent)] mb-1 block">ÉTAPE {step}</span>
                 <h3 className="font-heading font-bold text-white mb-1">{t(titleKey)}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{t(descKey)}</p>
+                <p className="text-sm text-white/65 leading-relaxed">{t(descKey)}</p>
               </div>
             </div>
           ))}
