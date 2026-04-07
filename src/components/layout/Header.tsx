@@ -195,15 +195,16 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
               />
             </Link>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
+              {/* Pulse SOS — bouton appel circulaire mobile */}
               <a
                 href={phoneLink}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl font-heading font-bold text-sm text-white"
-                style={{ background: 'var(--gradient-cta)' }}
+                className="relative flex items-center justify-center w-12 h-12 rounded-full text-white shadow-lg"
+                style={{ background: 'var(--gradient-cta)', boxShadow: '0 0 24px rgba(234,88,12,0.6)' }}
+                aria-label={t('aria.call')}
               >
-                <Phone size={16} className="animate-phone-ring" />
-                <span className="hidden sm:inline">{phoneDisplay}</span>
-                <span className="sm:hidden">{t('hero.callback').split(' ')[0]}</span>
+                <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-ping opacity-30" />
+                <Phone size={20} className="relative animate-phone-ring" />
               </a>
 
               <button

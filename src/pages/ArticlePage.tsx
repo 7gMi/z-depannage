@@ -36,8 +36,9 @@ export function ArticlePage({ phoneDisplay, phoneLink }: ArticlePageProps) {
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: article.title,
-    description: article.excerpt,
+    headline: displayTitle,
+    description: displayExcerpt,
+    inLanguage: lang,
     image: `https://z-depannage.fr${article.image}`,
     datePublished: article.date,
     dateModified: article.date,
@@ -56,8 +57,8 @@ export function ArticlePage({ phoneDisplay, phoneLink }: ArticlePageProps) {
   return (
     <>
       <PageMeta
-        title={`${article.title} | ZDEPANNAGE Blog`}
-        description={article.excerpt}
+        title={`${displayTitle} | ZDEPANNAGE Blog`}
+        description={displayExcerpt}
       />
       <JsonLd data={articleSchema} id="article-schema" />
 
