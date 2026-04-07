@@ -11,7 +11,7 @@ export function Footer({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8">
           <div>
             <Link to="/">
-              <img src="/logo-zdepannage.png" alt="ZDEPANNAGE" className="h-10 w-auto brightness-0 invert opacity-80 mb-3" />
+              <img src="/logo-zdepannage.png" alt="ZDEPANNAGE" width={192} height={192} className="h-10 w-auto brightness-0 invert opacity-80 mb-3" />
             </Link>
             <p className="text-sm">{t('footer.desc')}</p>
           </div>
