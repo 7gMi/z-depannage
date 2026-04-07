@@ -49,7 +49,7 @@ function LangDropdown({ activeLang, onChangeLang }: { activeLang: Lang; onChange
       >
         <current.Flag size={22} />
         <span>{current.code.toUpperCase()}</span>
-        <ChevronDown size={14} className={`text-white/65 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown size={14} className={`text-white/75 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
       </button>
 
       {open && (
@@ -63,7 +63,7 @@ function LangDropdown({ activeLang, onChangeLang }: { activeLang: Lang; onChange
               className={`flex items-center gap-3 w-full px-4 py-3 text-sm font-medium transition-all duration-150 ${
                 activeLang === code
                   ? 'bg-[var(--primary)]/15 text-white'
-                  : 'text-white/60 hover:bg-white/5 hover:text-white'
+                  : 'text-white/75 hover:bg-white/5 hover:text-white'
               }`}
             >
               <Flag size={22} />
@@ -278,7 +278,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
 
             {/* Langues en grille 2x2 */}
             <div className="px-5 mt-6">
-              <p className="text-xs text-white/60 uppercase tracking-wider font-medium mb-3">{t('aria.lang')}</p>
+              <p className="text-xs text-white/75 uppercase tracking-wider font-medium mb-3">{t('aria.lang')}</p>
               <div className="grid grid-cols-2 gap-2 bg-white/5 rounded-2xl p-3">
                 {LANGUAGES.map(({ code, Flag, label }) => (
                   <button
@@ -287,7 +287,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                     className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                       lang === code
                         ? 'bg-[var(--primary)]/20 text-white ring-2 ring-[var(--accent)]'
-                        : 'text-white/60 hover:bg-white/5'
+                        : 'text-white/75 hover:bg-white/5'
                     }`}
                   >
                     <Flag size={20} />

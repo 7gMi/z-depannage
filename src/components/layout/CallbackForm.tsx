@@ -36,7 +36,7 @@ export function CallbackForm() {
       <div className="max-w-2xl mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">{t('callback.title')}</h2>
-          <p className="text-white/60">{t('callback.subtitle')}</p>
+          <p className="text-white/75">{t('callback.subtitle')}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
@@ -48,7 +48,7 @@ export function CallbackForm() {
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-white/70 mb-2">{t('callback.phone')}</label>
               <div className="relative">
-                <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60" />
+                <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/75" />
                 <input
                   id="phone"
                   type="tel"
@@ -60,7 +60,7 @@ export function CallbackForm() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder={t('callback.phonePlaceholder')}
-                  className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/60 focus:outline-none focus:border-[var(--accent)]/50 focus:ring-1 focus:ring-[var(--accent)]/30 transition-all text-base invalid:[&:not(:placeholder-shown)]:border-red-500/50"
+                  className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/75 focus:outline-none focus:border-[var(--accent)]/50 focus:ring-1 focus:ring-[var(--accent)]/30 transition-all text-base invalid:[&:not(:placeholder-shown)]:border-red-500/50"
                 />
               </div>
             </div>

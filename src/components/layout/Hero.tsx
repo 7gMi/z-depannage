@@ -80,7 +80,7 @@ export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneL
         ))}
         <button
           onClick={() => setPaused(!paused)}
-          className="ml-2 w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 transition-all"
+          className="ml-2 w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/75 transition-all"
           aria-label={paused ? 'Reprendre le diaporama' : 'Mettre en pause le diaporama'}
         >
           {paused ? (

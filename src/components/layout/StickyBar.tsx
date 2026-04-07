@@ -46,7 +46,7 @@ export function StickyBar({ phoneLink, phoneDisplay }: { phoneLink: string; phon
           href="https://t.me/zdepannage"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 hover:bg-[#229ED9]/20 text-white/60 hover:text-[#229ED9] transition-all duration-200 hover:-translate-y-0.5"
+          className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 hover:bg-[#229ED9]/20 text-white/75 hover:text-[#229ED9] transition-all duration-200 hover:-translate-y-0.5"
           aria-label="Telegram"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -57,7 +57,7 @@ export function StickyBar({ phoneLink, phoneDisplay }: { phoneLink: string; phon
           href="https://wa.me/33756973686"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 hover:bg-[#25D366]/20 text-white/60 hover:text-[#25D366] transition-all duration-200 hover:-translate-y-0.5"
+          className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 hover:bg-[#25D366]/20 text-white/75 hover:text-[#25D366] transition-all duration-200 hover:-translate-y-0.5"
           aria-label="WhatsApp"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">

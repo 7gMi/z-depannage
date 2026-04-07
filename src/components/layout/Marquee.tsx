@@ -20,7 +20,7 @@ export function Marquee() {
         {repeated.map((item, i) => (
           <span key={i} className="inline-flex items-center gap-2 mx-8">
             <item.icon size={16} className="text-[var(--accent-bright)]" />
-            <span className="text-sm font-heading font-bold tracking-wider text-white/60">
+            <span className="text-sm font-heading font-bold tracking-wider text-white/75">
               {t(item.key)}
             </span>
             <span className="ml-8 text-[var(--accent)]/30">•</span>

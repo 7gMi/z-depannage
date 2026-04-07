@@ -133,6 +133,10 @@ html { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; f
   100% { transform: scale(1.08) translate(-1%, 1%); }
 }
 .hero-kenburns { animation: kenBurns 12s ease-in-out infinite alternate; }
+@media (max-width: 768px) {
+  .hero-kenburns { animation: none; }
+  .hero-spotlight::before { display: none; }
+}
 
 /* Pulse radar wave for Leaflet zone */
 @keyframes pulseRadar {
