@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F1B2D"/>
+      <stop offset="50%" stop-color="#1B2D47"/>
+      <stop offset="100%" stop-color="#0F1B2D"/>
+    </linearGradient>
+    <linearGradient id="cta" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Ligne orange décorative haut -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#cta)"/>
+
+  <!-- ZDEPANNAGE -->
+  <text x="600" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="80" letter-spacing="4">
+    <tspan fill="#EA580C">Z</tspan><tspan fill="#3B82F6">DEPANNAGE</tspan>
+  </text>
+
+  <!-- Sous-titre -->
+  <text x="600" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="38" fill="white">
+    Dépannage &amp; Remorquage 24h/24
+  </text>
+
+  <!-- Zone -->
+  <text x="600" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-weight="400" font-size="28" fill="white" opacity="0.6">
+    Île-de-France — Intervention en 30 minutes
+  </text>
+
+  <!-- Bouton CTA -->
+  <rect x="400" y="390" width="400" height="70" rx="16" fill="url(#cta)"/>
+  <text x="600" y="436" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="32" fill="white">
+    📞 07 56 97 36 86
+  </text>
+
+  <!-- Tags en bas -->
+  <text x="600" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-weight="600" font-size="20" fill="white" opacity="0.4">
+    Agréé assurances • Forces de l'ordre • 8 départements IDF
+  </text>
+
+  <!-- Ligne orange décorative bas -->
+  <rect x="0" y="626" width="1200" height="4" fill="url(#cta)"/>
+</svg>

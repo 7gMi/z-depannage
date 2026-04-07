@@ -1,15 +1,103 @@
-import { MapPin } from 'lucide-react';
+import { lazy, Suspense, useState } from 'react';
+import { MapPin, Navigation } from 'lucide-react';
+import { useT } from '../../i18n/LanguageContext';
 
-export function Zone() {
+const LeafletMap = lazy(() => import('../LeafletMap'));
+
+const DEPARTEMENTS: { code: string; name: string; highlight: boolean; coords: [number, number] }[] = [
+  { code: '91', name: 'Essonne', highlight: true, coords: [48.6300, 2.4400] },
+  { code: '94', name: 'Val-de-Marne', highlight: false, coords: [48.7800, 2.4700] },
+  { code: '75', name: 'Paris', highlight: false, coords: [48.8566, 2.3522] },
+  { code: '92', name: 'Hauts-de-Seine', highlight: false, coords: [48.8400, 2.2200] },
+  { code: '93', name: 'Seine-Saint-Denis', highlight: false, coords: [48.9100, 2.4500] },
+  { code: '77', name: 'Seine-et-Marne', highlight: false, coords: [48.6100, 2.9000] },
+  { code: '78', name: 'Yvelines', highlight: false, coords: [48.8000, 1.9000] },
+  { code: '95', name: "Val-d'Oise", highlight: false, coords: [49.0500, 2.1500] },
+];
+
+const GRIGNY: [number, number] = [48.6544, 2.3833];
+
+const VILLES = [
+  'Grigny', 'Morsang-sur-Orge', 'Évry-Courcouronnes', 'Corbeil-Essonnes',
+  'Viry-Châtillon', 'Ris-Orangis', 'Savigny-sur-Orge', 'Juvisy-sur-Orge',
+  'Longjumeau', 'Palaiseau', 'Massy', 'Athis-Mons',
+];
+
+export function Zone({ compact }: { compact?: boolean } = {}) {
+  const { t } = useT();
+  const [selected, setSelected] = useState<{ code: string; name: string; coords: [number, number] } | null>(null);
+
   return (
     <section id="zone" className="py-16 sm:py-20 bg-[var(--bg-secondary)]">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4">Zone d'intervention</h2>
-        <p className="text-[var(--text-secondary)] mb-8">Morsang-sur-Orge et toute l'Ile-de-France</p>
-        <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-50 text-[var(--primary)] font-medium">
-          <MapPin size={18} />
-          Essonne (91) - Val-de-Marne (94) - Paris (75) - Hauts-de-Seine (92)
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4">{t('zone.title')}</h2>
+          <p className="text-[var(--text-secondary)] max-w-xl mx-auto">{t('zone.subtitle')}</p>
         </div>
+
+        {!compact && (
+          <div className="reveal mb-10">
+            <Suspense fallback={<div className="h-[420px] rounded-2xl bg-[var(--bg-secondary)] animate-pulse" />}>
+              <LeafletMap
+                center={GRIGNY}
+                zoom={9}
+                height="420px"
+                showCircle
+                circleRadius={35000}
+                showMarker={false}
+                highlight={selected ? { position: selected.coords, label: `${selected.name} (${selected.code})` } : null}
+                flyToZoom={10}
+                ariaLabel="Carte de la zone d'intervention en Île-de-France"
+              />
+            </Suspense>
+          </div>
+        )}
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+          {DEPARTEMENTS.map(({ code, name, highlight, coords }) => (
+            <button
+              key={code}
+              type="button"
+              onClick={() => setSelected({ code, name, coords })}
+              className={`flex items-center gap-3 p-4 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
+                selected?.code === code
+                  ? 'bg-[var(--primary)]/10 border-[var(--primary)] shadow-md -translate-y-0.5'
+                  : highlight
+                  ? 'bg-[var(--accent)]/5 border-[var(--accent)]/20 shadow-sm hover:-translate-y-0.5'
+                  : 'bg-[var(--bg-card)] border-[var(--border-default)] hover:border-[var(--primary)]/30 hover:-translate-y-0.5'
+              }`}
+            >
+              <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-heading font-extrabold text-sm ${
+                highlight ? 'bg-[var(--accent)]/10 text-[var(--accent)]' : 'bg-[var(--primary)]/8 text-[var(--primary)]'
+              }`}>
+                {code}
+              </div>
+              <div>
+                <p className="font-semibold text-sm text-[var(--text-primary)]">{name}</p>
+                {highlight && <span className="text-[10px] font-bold text-[var(--accent)] uppercase tracking-wider">Base</span>}
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {!compact && (
+          <div className="bg-[var(--bg-card)] rounded-2xl border border-[var(--border-default)] p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Navigation size={18} className="text-[var(--primary)]" />
+              <h3 className="font-heading font-bold text-base text-[var(--text-primary)]">{t('zone.cities')}</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {VILLES.map((ville) => (
+                <span key={ville} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--bg-secondary)] text-sm text-[var(--text-secondary)] font-medium">
+                  <MapPin size={12} className="text-[var(--accent)]" />
+                  {ville}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <p className="text-center text-sm text-[var(--text-tertiary)] mt-6">{t('zone.note')}</p>
       </div>
     </section>
   );

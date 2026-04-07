@@ -1,32 +1,64 @@
-import { BrowserRouter } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
-import { Hero } from './components/layout/Hero';
-import { Services } from './components/layout/Services';
-import { Tarifs } from './components/layout/Tarifs';
-import { Zone } from './components/layout/Zone';
-import { Contact } from './components/layout/Contact';
-import { CTABanner } from './components/layout/CTABanner';
+import { StickyBar } from './components/layout/StickyBar';
+import { ScrollToTop } from './components/ScrollToTop';
+import { LanguageProvider, useT } from './i18n/LanguageContext';
+import { useScrollReveal } from './hooks/useScrollReveal';
 
-const PHONE = '0169XXXXXX'; // TODO: remplacer par le vrai numéro de Dragos
-const PHONE_DISPLAY = '01 69 XX XX XX';
+const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
+const ServicesPage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesPage })));
+const TarifsPage = lazy(() => import('./pages/TarifsPage').then(m => ({ default: m.TarifsPage })));
+const ZonePage = lazy(() => import('./pages/ZonePage').then(m => ({ default: m.ZonePage })));
+const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
+const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.BlogPage })));
+const ArticlePage = lazy(() => import('./pages/ArticlePage').then(m => ({ default: m.ArticlePage })));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
+
+const PHONE = '0756973686';
+const PHONE_DISPLAY = '07 56 97 36 86';
 const PHONE_LINK = `tel:+33${PHONE.slice(1)}`;
+
+function AppContent() {
+  useScrollReveal();
+  const { t } = useT();
+
+  return (
+    <div className="min-h-screen bg-[var(--bg-primary)]">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--accent)] focus:text-white focus:font-bold">
+        {t('a11y.skipToContent')}
+      </a>
+      <Header phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />
+      <main id="main-content">
+        <Suspense fallback={<div className="min-h-[60vh]" />}>
+          <Routes>
+            <Route path="/" element={<HomePage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+            <Route path="/services" element={<ServicesPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+            <Route path="/tarifs" element={<TarifsPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+            <Route path="/zone" element={<ZonePage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+            <Route path="/a-propos" element={<AboutPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+          <Route path="/blog" element={<BlogPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+          <Route path="/blog/:slug" element={<ArticlePage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+            <Route path="/contact" element={<ContactPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+            <Route path="*" element={<NotFoundPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+          </Routes>
+        </Suspense>
+      </main>
+      <Footer phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />
+      <StickyBar phoneLink={PHONE_LINK} />
+    </div>
+  );
+}
 
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-[var(--bg-primary)]">
-        <Header phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />
-        <main>
-          <Hero phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />
-          <Services />
-          <Tarifs />
-          <Zone />
-          <CTABanner phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />
-          <Contact phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />
-        </main>
-        <Footer phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />
-      </div>
+      <LanguageProvider>
+        <ScrollToTop />
+        <AppContent />
+      </LanguageProvider>
     </BrowserRouter>
   );
 }

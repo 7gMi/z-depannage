@@ -29,7 +29,7 @@
   /* Sémantiques */
   --color-success: #16A34A;
   --color-warning: #EAB308;
-  --color-error: #DC2626;
+  --color-error: #EF4444;
 
   /* ===== FONTS ===== */
   --font-heading: "Plus Jakarta Sans", system-ui, sans-serif;
@@ -96,6 +96,15 @@ body {
   50%, 100% { transform: rotate(0deg); }
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
 @keyframes ctaPulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.4); }
   50% { box-shadow: 0 0 0 12px rgba(234, 88, 12, 0); }
@@ -107,6 +116,10 @@ body {
 .reveal-stagger > .reveal.visible:nth-child(2) { animation-delay: 100ms; }
 .reveal-stagger > .reveal.visible:nth-child(3) { animation-delay: 200ms; }
 .reveal-stagger > .reveal.visible:nth-child(4) { animation-delay: 300ms; }
+.reveal-stagger > .reveal.visible:nth-child(5) { animation-delay: 400ms; }
+.reveal-stagger > .reveal.visible:nth-child(6) { animation-delay: 500ms; }
+.reveal-stagger > .reveal.visible:nth-child(7) { animation-delay: 600ms; }
+.reveal-stagger > .reveal.visible:nth-child(8) { animation-delay: 700ms; }
 
 .animate-phone-ring { animation: phoneRing 2s ease-in-out infinite; }
 .animate-cta-pulse { animation: ctaPulse 3s ease-in-out infinite; }
@@ -121,4 +134,7 @@ body {
   }
   .reveal { opacity: 1; transform: none; }
   .card-hover:hover { transform: none; }
+  .animate-marquee { animation: none; }
+  .animate-phone-ring { animation: none; }
+  .animate-cta-pulse { animation: none; }
 }
