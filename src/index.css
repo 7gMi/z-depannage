@@ -124,6 +124,53 @@ body {
 .animate-phone-ring { animation: phoneRing 2s ease-in-out infinite; }
 .animate-cta-pulse { animation: ctaPulse 3s ease-in-out infinite; }
 
+/* Ken Burns slow zoom for hero slides */
+@keyframes kenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-1%, 1%); }
+}
+.hero-kenburns { animation: kenBurns 12s ease-in-out infinite alternate; }
+
+/* Pulse radar wave for Leaflet zone */
+@keyframes pulseRadar {
+  0% { transform: scale(0.5); opacity: 0.8; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* FAQ accordion fluid via grid-template-rows */
+.faq-content { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 400ms ease; }
+.faq-content > div { overflow: hidden; }
+.faq-content.open { grid-template-rows: 1fr; }
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+  transform-origin: left;
+  transform: scaleX(var(--progress, 0));
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Hero spotlight effect */
+.hero-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(234, 88, 12, 0.18),
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 300ms ease;
+}
+
 .card-hover { transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease; }
 .card-hover:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent-bright); }
 
@@ -137,4 +184,5 @@ body {
   .animate-marquee { animation: none; }
   .animate-phone-ring { animation: none; }
   .animate-cta-pulse { animation: none; }
+  .hero-kenburns { animation: none; }
 }

@@ -4,6 +4,7 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { StickyBar } from './components/layout/StickyBar';
 import { ScrollToTop } from './components/ScrollToTop';
+import { ScrollProgress } from './components/ScrollProgress';
 import { LanguageProvider, useT } from './i18n/LanguageContext';
 import { useScrollReveal } from './hooks/useScrollReveal';
 // HomePage non lazy : c'est la landing principale (LCP critical path)
@@ -27,6 +28,7 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)]">
+      <ScrollProgress />
       <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--accent)] focus:text-white focus:font-bold">
         {t('a11y.skipToContent')}
       </a>

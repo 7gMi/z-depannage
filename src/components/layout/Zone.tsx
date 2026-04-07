@@ -45,6 +45,7 @@ export function Zone({ compact }: { compact?: boolean } = {}) {
                 showCircle
                 circleRadius={35000}
                 showMarker={false}
+                showRadar
                 highlight={selected ? { position: selected.coords, label: `${selected.name} (${selected.code})` } : null}
                 flyToZoom={10}
                 ariaLabel="Carte de la zone d'intervention en Île-de-France"

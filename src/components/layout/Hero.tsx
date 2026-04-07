@@ -24,8 +24,19 @@ export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneL
     return () => clearInterval(timer);
   }, [paused]);
 
+  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    e.currentTarget.style.setProperty('--mx', `${x}%`);
+    e.currentTarget.style.setProperty('--my', `${y}%`);
+  }
+
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section
+      className="hero-spotlight relative min-h-[90vh] flex items-center overflow-hidden"
+      onMouseMove={handleMouseMove}
+    >
       {SLIDES.map((slide, i) => (
         <div
           key={slide.id}
@@ -41,7 +52,7 @@ export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneL
               alt={slide.alt}
               width={slide.w}
               height={slide.h}
-              className="w-full h-full object-cover"
+              className={`w-full h-full object-cover ${current === i ? 'hero-kenburns' : ''}`}
               loading={i === 0 ? 'eager' : 'lazy'}
               fetchPriority={i === 0 ? 'high' : 'auto'}
             />

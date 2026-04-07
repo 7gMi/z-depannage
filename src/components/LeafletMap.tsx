@@ -30,6 +30,14 @@ const pinIcon = L.divIcon({
   popupAnchor: [0, -36],
 });
 
+// Pulse radar au centre (cercle qui s'élargit en boucle)
+const radarIcon = L.divIcon({
+  className: 'zdep-radar',
+  html: `<div style="position:relative;width:20px;height:20px;"><div style="position:absolute;inset:0;background:#EA580C;border-radius:50%;animation:zdepRadar 2s ease-out infinite;"></div><div style="position:absolute;inset:0;background:#EA580C;border-radius:50%;animation:zdepRadar 2s ease-out infinite;animation-delay:1s;"></div><div style="position:absolute;inset:6px;background:#EA580C;border-radius:50%;border:2px solid white;box-shadow:0 0 8px rgba(234,88,12,0.8);"></div></div><style>@keyframes zdepRadar{0%{transform:scale(0.5);opacity:0.9}100%{transform:scale(3);opacity:0}}</style>`,
+  iconSize: [20, 20],
+  iconAnchor: [10, 10],
+});
+
 // Pin bleu pour départements highlight (différencié du pin orange principal)
 const highlightIcon = L.divIcon({
   className: 'zdep-pin-highlight',
@@ -46,6 +54,7 @@ interface LeafletMapProps {
   showCircle?: boolean;
   circleRadius?: number;
   showMarker?: boolean;
+  showRadar?: boolean;
   popupText?: string;
   ariaLabel?: string;
   highlight?: { position: [number, number]; label: string } | null;
@@ -59,6 +68,7 @@ export default function LeafletMap({
   showCircle = false,
   circleRadius = 30000,
   showMarker = true,
+  showRadar = false,
   popupText = 'ZDEPANNAGE — Dépôt principal',
   ariaLabel = 'Carte interactive',
   highlight = null,
@@ -92,6 +102,9 @@ export default function LeafletMap({
               weight: 2,
             }}
           />
+        )}
+        {showRadar && (
+          <Marker position={center} icon={radarIcon} interactive={false} />
         )}
         {showMarker && (
           <Marker position={center} icon={pinIcon}>
