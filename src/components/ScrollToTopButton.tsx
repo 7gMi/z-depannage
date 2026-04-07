@@ -1,65 +1,70 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { ArrowUp } from 'lucide-react';
 
-const RADIUS = 22;
-const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
-
 export function ScrollToTopButton() {
-  const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const rafRef = useRef<number | undefined>(undefined);
 
-  useEffect(() => {
-    function onScroll() {
+  const handleScroll = useCallback(() => {
+    if (rafRef.current) return;
+    rafRef.current = requestAnimationFrame(() => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const ratio = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
-      setProgress(ratio);
+      const pct = docHeight > 0 ? scrollTop / docHeight : 0;
+
       setVisible(scrollTop > 200);
-    }
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+      setProgress(pct);
+
+      rafRef.current = undefined;
+    });
   }, []);
 
-  function scrollTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [handleScroll]);
 
-  const offset = CIRCUMFERENCE - progress * CIRCUMFERENCE;
+  if (!visible) return null;
+
+  const size = 44;
+  const strokeWidth = 3;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const dash = progress * circumference;
 
   return (
     <button
-      type="button"
-      onClick={scrollTop}
-      aria-label="Retour en haut de la page"
-      className={`fixed right-4 bottom-20 sm:bottom-20 z-40 w-12 h-12 rounded-full bg-[var(--bg-dark)]/80 backdrop-blur-md border border-white/15 text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--bg-dark)] flex items-center justify-center ${
-        visible ? 'opacity-100' : 'opacity-0 pointer-events-none'
-      }`}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      className="fixed bottom-20 right-6 z-[200] w-11 h-11 rounded-full bg-slate-800/80 hover:bg-slate-700 text-white flex items-center justify-center shadow-lg backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
+      aria-label={`Retour en haut — ${Math.round(progress * 100)}% scrollé`}
     >
-      {/* Cercle de progression SVG */}
-      <svg className="absolute inset-0 -rotate-90" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+      <svg className="absolute inset-0 -rotate-90" width={size} height={size} aria-hidden="true">
         <circle
-          cx="24"
-          cy="24"
-          r={RADIUS}
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
           fill="none"
-          stroke="rgba(255,255,255,0.12)"
-          strokeWidth="2.5"
+          stroke="rgba(255,255,255,0.15)"
+          strokeWidth={strokeWidth}
         />
         <circle
-          cx="24"
-          cy="24"
-          r={RADIUS}
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
           fill="none"
-          stroke="var(--accent)"
-          strokeWidth="2.5"
+          stroke="#EA580C"
+          strokeWidth={strokeWidth}
           strokeLinecap="round"
-          strokeDasharray={CIRCUMFERENCE}
-          strokeDashoffset={offset}
-          style={{ transition: 'stroke-dashoffset 80ms linear' }}
+          strokeDasharray={circumference}
+          strokeDashoffset={circumference - dash}
+          style={{ transition: 'stroke-dashoffset 0.1s ease' }}
         />
       </svg>
-      <ArrowUp size={20} strokeWidth={2.5} className="relative z-10" />
+      <ArrowUp className="w-4 h-4 relative z-10" />
     </button>
   );
 }
