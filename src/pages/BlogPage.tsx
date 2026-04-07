@@ -4,6 +4,7 @@ import { Clock, ArrowRight, BookOpen } from 'lucide-react';
 import { PageMeta } from '../components/PageMeta';
 import { CTABanner } from '../components/layout/CTABanner';
 import { ARTICLES } from '../data/articles';
+import { getArticleI18n } from '../data/articles-i18n';
 import { useT } from '../i18n/LanguageContext';
 
 interface BlogPageProps {
@@ -12,20 +13,34 @@ interface BlogPageProps {
 }
 
 export function BlogPage({ phoneDisplay, phoneLink }: BlogPageProps) {
-  const { t } = useT();
+  const { t, lang } = useT();
   const [activeCategory, setActiveCategory] = useState<string>('all');
+
+  const localizedArticles = useMemo(
+    () =>
+      ARTICLES.map((a) => {
+        const i18n = getArticleI18n(a.slug, lang);
+        return {
+          ...a,
+          title: i18n?.title ?? a.title,
+          excerpt: i18n?.excerpt ?? a.excerpt,
+          category: i18n?.category ?? a.category,
+        };
+      }),
+    [lang]
+  );
 
   const categories = useMemo(() => {
     const counts: Record<string, number> = {};
-    ARTICLES.forEach((a) => {
+    localizedArticles.forEach((a) => {
       counts[a.category] = (counts[a.category] || 0) + 1;
     });
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
-  }, []);
+  }, [localizedArticles]);
 
   const filteredArticles = useMemo(
-    () => (activeCategory === 'all' ? ARTICLES : ARTICLES.filter((a) => a.category === activeCategory)),
-    [activeCategory]
+    () => (activeCategory === 'all' ? localizedArticles : localizedArticles.filter((a) => a.category === activeCategory)),
+    [activeCategory, localizedArticles]
   );
 
   return (

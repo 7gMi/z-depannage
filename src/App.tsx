@@ -39,8 +39,8 @@ function AppContent() {
             <Route path="/tarifs" element={<TarifsPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
             <Route path="/zone" element={<ZonePage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
             <Route path="/a-propos" element={<AboutPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
-          <Route path="/blog" element={<BlogPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
-          <Route path="/blog/:slug" element={<ArticlePage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+            <Route path="/blog" element={<BlogPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+            <Route path="/blog/:slug" element={<ArticlePage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
             <Route path="/contact" element={<ContactPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
             <Route path="*" element={<NotFoundPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
           </Routes>

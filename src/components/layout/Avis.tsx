@@ -1,21 +1,12 @@
 import { Star } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
+import { AVIS } from '../../data/avis';
 
-const AVIS = [
-  { name: 'Arnaud de Closmadeuc', initial: 'A', gradient: 'linear-gradient(135deg, #4285F4, #34A853)', text: "Un service impeccable ! Le dépanneur est arrivé rapidement, très professionnel.", date: 'Août 2025' },
-  { name: 'Théo Falsquelle', initial: 'T', gradient: 'linear-gradient(135deg, #EA580C, #F97316)', text: "Service parfait, Ali est intervenu rapidement et sa bonne humeur fait du bien quand on était en galère. Je recommande.", date: 'Mars 2026' },
-  { name: 'Virginia Danalachi', initial: 'V', gradient: 'linear-gradient(135deg, #34A853, #22c55e)', text: "Un professionnel qui nous a aidé lors d'une panne sur l'autoroute, très rapide et rigoureux, qui s'est occupé des documents pour l'assurance.", date: 'Janvier 2025' },
-  { name: 'Yns Bene', initial: 'Y', gradient: 'linear-gradient(135deg, #1E40AF, #3B82F6)', text: "Dépannage rapide et de qualité. ZDepannage a pris soin de mon véhicule de la prise en charge à la livraison, il m'a aiguillé vers un super garage !! C'est un vrai professionnel !!", date: 'Avril 2025' },
-  { name: 'Céline Lenoir', initial: 'C', gradient: 'linear-gradient(135deg, #8B5CF6, #A78BFA)', text: "Les bonnes personnes au bon moment, ma voiture ne démarre pas Dieu merci j'ai croisé Z dépannage et son équipe sur ma route. Merci à vous !", date: 'Octobre 2025' },
-  { name: 'Delphine Vierezet', initial: 'D', gradient: 'linear-gradient(135deg, #EA4335, #ef4444)', text: "Un grand merci à Bastien. C'est un dépanneur rassurant et efficace. Dès qu'il dépose la voiture au garage, il envoie des photos pour preuve. Je recommande cette entreprise.", date: 'Mars 2026' },
-  { name: 'Adam Ozturk', initial: 'A', gradient: 'linear-gradient(135deg, #FBBC05, #eab308)', text: "Dépanneur au top, délais respectés, venu rapidement. J'ai déboursé 0€, il m'a fait une prise en charge avec mon assurance. Dépanneuse dernier cri !", date: 'Mars 2025' },
-];
-
-function Stars() {
+function Stars({ size = 14 }: { size?: number }) {
   return (
-    <div className="flex gap-0.5">
+    <div className="flex gap-0.5" role="img" aria-label="5 étoiles sur 5">
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} size={14} className="fill-yellow-400 text-yellow-400" />
+        <Star key={i} size={size} className="fill-yellow-400 text-yellow-400" aria-hidden="true" />
       ))}
     </div>
   );
@@ -44,11 +35,7 @@ export function Avis({ limit }: { limit?: number } = {}) {
           <div className="flex items-center justify-center gap-3">
             <span className="font-heading text-5xl font-extrabold text-[var(--text-primary)]">5.0</span>
             <div className="flex flex-col items-start">
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={20} className="fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
+              <Stars size={20} />
               <span className="text-sm text-[var(--text-tertiary)]">{t('avis.count')}</span>
             </div>
           </div>

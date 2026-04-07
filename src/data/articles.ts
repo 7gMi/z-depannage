@@ -1,3 +1,9 @@
+export interface ArticleI18n {
+  title: string;
+  excerpt: string;
+  category: string;
+}
+
 export interface Article {
   slug: string;
   title: string;
@@ -7,6 +13,11 @@ export interface Article {
   readTime: number;
   image: string;
   content: string[];
+  i18n?: {
+    ar?: ArticleI18n;
+    ro?: ArticleI18n;
+    ru?: ArticleI18n;
+  };
 }
 
 export const ARTICLES: Article[] = [

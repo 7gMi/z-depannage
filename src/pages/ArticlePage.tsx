@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Phone } from 'lucide-react';
 import { PageMeta } from '../components/PageMeta';
 import { JsonLd } from '../components/JsonLd';
 import { ARTICLES } from '../data/articles';
+import { getArticleI18n } from '../data/articles-i18n';
 import { useT } from '../i18n/LanguageContext';
 
 interface ArticlePageProps {
@@ -22,10 +23,15 @@ function renderInline(text: string) {
 
 export function ArticlePage({ phoneDisplay, phoneLink }: ArticlePageProps) {
   const { slug } = useParams();
-  const { t } = useT();
+  const { t, lang } = useT();
   const article = ARTICLES.find((a) => a.slug === slug);
 
   if (!article) return <Navigate to="/blog" replace />;
+
+  const i18n = slug ? getArticleI18n(slug, lang) : null;
+  const displayTitle = i18n?.title ?? article.title;
+  const displayExcerpt = i18n?.excerpt ?? article.excerpt;
+  const displayCategory = i18n?.category ?? article.category;
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -70,7 +76,7 @@ export function ArticlePage({ phoneDisplay, phoneLink }: ArticlePageProps) {
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-xs font-bold text-[var(--accent)] bg-[var(--accent)]/8 px-2.5 py-1 rounded-lg uppercase tracking-wider">
-                {article.category}
+                {displayCategory}
               </span>
               <span className="flex items-center gap-1 text-xs text-[var(--text-tertiary)]">
                 <Clock size={12} />
@@ -78,9 +84,14 @@ export function ArticlePage({ phoneDisplay, phoneLink }: ArticlePageProps) {
               </span>
             </div>
             <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] leading-tight mb-4">
-              {article.title}
+              {displayTitle}
             </h1>
-            <p className="text-lg text-[var(--text-secondary)]">{article.excerpt}</p>
+            <p className="text-lg text-[var(--text-secondary)]">{displayExcerpt}</p>
+            {lang !== 'fr' && (
+              <div className="mt-4 px-4 py-3 rounded-xl bg-[var(--primary)]/5 border border-[var(--primary)]/20 text-sm text-[var(--text-secondary)]" lang="fr" dir="ltr">
+                ℹ️ {t('blog.frenchOnly')}
+              </div>
+            )}
             <div className="mt-4 text-sm text-[var(--text-tertiary)]">
               Publié le {new Date(article.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
             </div>
