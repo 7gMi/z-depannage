@@ -47,7 +47,7 @@ function AppContent() {
         </Suspense>
       </main>
       <Footer phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />
-      <StickyBar phoneLink={PHONE_LINK} />
+      <StickyBar phoneLink={PHONE_LINK} phoneDisplay={PHONE_DISPLAY} />
     </div>
   );
 }

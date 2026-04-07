@@ -14,7 +14,8 @@ interface BlogPageProps {
 
 export function BlogPage({ phoneDisplay, phoneLink }: BlogPageProps) {
   const { t, lang } = useT();
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  // Stocke la catégorie en clé FR (stable) — affiche la version localisée
+  const [activeCategoryKey, setActiveCategoryKey] = useState<string>('all');
 
   const localizedArticles = useMemo(
     () =>
@@ -24,23 +25,36 @@ export function BlogPage({ phoneDisplay, phoneLink }: BlogPageProps) {
           ...a,
           title: i18n?.title ?? a.title,
           excerpt: i18n?.excerpt ?? a.excerpt,
-          category: i18n?.category ?? a.category,
+          // displayCategory pour affichage, categoryKey pour le filtre
+          displayCategory: i18n?.category ?? a.category,
+          categoryKey: a.category,
         };
       }),
     [lang]
   );
 
+  // Liste catégories : ordre stable (par clé FR), labels localisés
   const categories = useMemo(() => {
-    const counts: Record<string, number> = {};
+    const seen = new Map<string, { label: string; count: number }>();
     localizedArticles.forEach((a) => {
-      counts[a.category] = (counts[a.category] || 0) + 1;
+      const existing = seen.get(a.categoryKey);
+      if (existing) {
+        existing.count++;
+      } else {
+        seen.set(a.categoryKey, { label: a.displayCategory, count: 1 });
+      }
     });
-    return Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    return Array.from(seen.entries())
+      .map(([key, { label, count }]) => ({ key, label, count }))
+      .sort((a, b) => b.count - a.count);
   }, [localizedArticles]);
 
   const filteredArticles = useMemo(
-    () => (activeCategory === 'all' ? localizedArticles : localizedArticles.filter((a) => a.category === activeCategory)),
-    [activeCategory, localizedArticles]
+    () =>
+      activeCategoryKey === 'all'
+        ? localizedArticles
+        : localizedArticles.filter((a) => a.categoryKey === activeCategoryKey),
+    [activeCategoryKey, localizedArticles]
   );
 
   return (
@@ -73,33 +87,33 @@ export function BlogPage({ phoneDisplay, phoneLink }: BlogPageProps) {
           <div className="flex flex-wrap justify-center gap-2 mb-10">
             <button
               type="button"
-              onClick={() => setActiveCategory('all')}
+              onClick={() => setActiveCategoryKey('all')}
               className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 border ${
-                activeCategory === 'all'
+                activeCategoryKey === 'all'
                   ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-md'
                   : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border-[var(--border-default)] hover:border-[var(--primary)]/40 hover:text-[var(--primary)]'
               }`}
             >
               {t('blog.all') || 'Tous'} <span className="opacity-60">({ARTICLES.length})</span>
             </button>
-            {categories.map(([cat, count]) => (
+            {categories.map(({ key, label, count }) => (
               <button
-                key={cat}
+                key={key}
                 type="button"
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => setActiveCategoryKey(key)}
                 className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 border ${
-                  activeCategory === cat
+                  activeCategoryKey === key
                     ? 'bg-[var(--accent)] text-white border-[var(--accent)] shadow-md'
                     : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border-[var(--border-default)] hover:border-[var(--accent)]/40 hover:text-[var(--accent)]'
                 }`}
               >
-                {cat} <span className="opacity-60">({count})</span>
+                {label} <span className="opacity-60">({count})</span>
               </button>
             ))}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredArticles.map(({ slug, title, excerpt, category, date, readTime, image }) => (
+            {filteredArticles.map(({ slug, title, excerpt, displayCategory, date, readTime, image }) => (
               <Link
                 key={slug}
                 to={`/blog/${slug}`}
@@ -119,7 +133,7 @@ export function BlogPage({ phoneDisplay, phoneLink }: BlogPageProps) {
                 <div className="p-6 pt-3 flex flex-col flex-1">
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-xs font-bold text-[var(--accent)] bg-[var(--accent)]/8 px-2.5 py-1 rounded-lg uppercase tracking-wider">
-                      {category}
+                      {displayCategory}
                     </span>
                     <span className="flex items-center gap-1 text-xs text-[var(--text-tertiary)]">
                       <Clock size={12} />

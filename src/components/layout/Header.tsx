@@ -120,6 +120,16 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
 
   return (
     <>
+      {/* Bandeau "Disponible maintenant" */}
+      <div className="bg-gradient-to-r from-[#16a34a] via-[#22c55e] to-[#16a34a] text-white text-xs sm:text-sm font-semibold py-1.5 px-4 flex items-center justify-center gap-2">
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white" />
+        </span>
+        <span className="whitespace-nowrap">{t('header.available')}</span>
+        <span className="hidden sm:inline opacity-80">•</span>
+        <span className="hidden sm:inline">{t('header.intervention')}</span>
+      </div>
       <header className="sticky top-0 z-50 bg-[var(--bg-dark)]/40 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4">
           {/* Desktop navbar */}
