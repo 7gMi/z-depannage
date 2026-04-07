@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { ARTICLES } from '../data/articles';
 
 describe('Articles', () => {
-  it('should have 7 articles', () => {
-    expect(ARTICLES).toHaveLength(7);
+  it('should have 12 articles', () => {
+    expect(ARTICLES).toHaveLength(12);
   });
 
   it('should have unique slugs', () => {
@@ -26,7 +26,7 @@ describe('Articles', () => {
 
   it('should have valid image paths', () => {
     for (const article of ARTICLES) {
-      expect(article.image).toMatch(/^\/blog\/.+\.jpg$/);
+      expect(article.image).toMatch(/^\/blog\/.+\.webp$/);
     }
   });
 
