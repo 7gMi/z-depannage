@@ -121,14 +121,14 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
   return (
     <>
       <header className="sticky top-0 z-50 bg-[var(--bg-dark)]/40 backdrop-blur-xl border-b border-white/10">
-        {/* Bandeau dispo intégré au top du header (opacity 60%) */}
-        <div className="border-b border-white/5 text-green-400/80 text-xs sm:text-sm font-semibold py-1.5 px-4 flex items-center justify-center gap-2 opacity-60">
+        {/* Bandeau dispo intégré au top du header — bg vert 60% + texte 100% blanc */}
+        <div className="bg-green-600/60 text-white text-xs sm:text-sm font-semibold py-1.5 px-4 flex items-center justify-center gap-2 border-b border-white/5">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
           </span>
           <span className="whitespace-nowrap">{t('header.available')}</span>
-          <span className="hidden sm:inline opacity-70">•</span>
+          <span className="hidden sm:inline opacity-80">•</span>
           <span className="hidden sm:inline">{t('header.intervention')}</span>
         </div>
         <div className="max-w-7xl mx-auto px-4">
