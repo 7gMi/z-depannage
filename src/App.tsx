@@ -5,6 +5,7 @@ import { Footer } from './components/layout/Footer';
 import { StickyBar } from './components/layout/StickyBar';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollProgress } from './components/ScrollProgress';
+import { ScrollToTopButton } from './components/ScrollToTopButton';
 import { LanguageProvider, useT } from './i18n/LanguageContext';
 import { useScrollReveal } from './hooks/useScrollReveal';
 // HomePage non lazy : c'est la landing principale (LCP critical path)
@@ -49,6 +50,7 @@ function AppContent() {
         </Suspense>
       </main>
       <Footer phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />
+      <ScrollToTopButton />
       <StickyBar phoneLink={PHONE_LINK} phoneDisplay={PHONE_DISPLAY} />
     </div>
   );
