@@ -65,25 +65,27 @@ export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneL
       <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-dark)] via-transparent to-[var(--bg-dark)]/30" />
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.5\'/%3E%3C/svg%3E")' }} />
 
-      <div className="absolute bottom-28 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20" role="tablist" aria-label={t('aria.carousel')}>
-        {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            role="tab"
-            aria-selected={current === i}
-            tabIndex={current === i ? 0 : -1}
-            onClick={() => setCurrent(i)}
-            className="relative flex items-center justify-center min-w-[44px] min-h-[44px]"
-            aria-label={`Slide ${i + 1}`}
-          >
-            <span
-              aria-hidden="true"
-              className={`block h-1.5 rounded-full transition-all duration-500 ${
-                current === i ? 'w-8 bg-[var(--accent)]' : 'w-3 bg-white/40 hover:bg-white/70'
-              }`}
-            />
-          </button>
-        ))}
+      <div className="absolute bottom-28 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+        <div className="flex items-center gap-2" role="tablist" aria-label={t('aria.carousel')}>
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              role="tab"
+              aria-selected={current === i}
+              tabIndex={current === i ? 0 : -1}
+              onClick={() => setCurrent(i)}
+              className="relative flex items-center justify-center min-w-[44px] min-h-[44px]"
+              aria-label={`Slide ${i + 1}`}
+            >
+              <span
+                aria-hidden="true"
+                className={`block h-1.5 rounded-full transition-all duration-500 ${
+                  current === i ? 'w-8 bg-[var(--accent)]' : 'w-3 bg-white/40 hover:bg-white/70'
+                }`}
+              />
+            </button>
+          ))}
+        </div>
         <button
           onClick={() => setPaused(!paused)}
           className="ml-2 w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/75 transition-all"
