@@ -156,6 +156,8 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
               <img
                 src="/logo-zdepannage.png"
                 alt="ZDEPANNAGE"
+                width={192}
+                height={192}
                 className="h-28 w-auto brightness-0 invert group-hover:opacity-90 transition-all duration-300"
               />
             </Link>
@@ -191,6 +193,8 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
               <img
                 src="/logo-zdepannage.png"
                 alt="ZDEPANNAGE"
+                width={192}
+                height={192}
                 className="h-12 w-auto brightness-0 invert opacity-90"
               />
             </Link>

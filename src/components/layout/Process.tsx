@@ -149,7 +149,7 @@ export function Process() {
                 left: `calc(${currentPos}% - 50px)`,
               }}
             >
-              <img src="/logo-zdepannage.png" alt="ZDEPANNAGE en route" className="h-24 w-auto brightness-0 invert drop-shadow-[0_4px_16px_rgba(234,88,12,0.6)]" />
+              <img src="/logo-zdepannage.png" alt="ZDEPANNAGE en route" width={192} height={192} className="h-24 w-auto brightness-0 invert drop-shadow-[0_4px_16px_rgba(234,88,12,0.6)]" />
               {/* Étincelles sous le camion */}
               <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
                 <span className="w-1 h-1 rounded-full bg-orange-400 animate-ping" />
