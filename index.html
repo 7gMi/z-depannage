@@ -5,6 +5,12 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#1E40AF" />
+
+    <!-- Preload LCP image hero (AVIF priorité) -->
+    <link rel="preload" as="image" href="/hero/2.avif" type="image/avif" fetchpriority="high" />
+
+    <!-- Preconnect tiles OSM -->
+    <link rel="dns-prefetch" href="https://a.tile.openstreetmap.org" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZDEPANNAGE — Dépannage & Remorquage 24h/24 | Île-de-France</title>
     <meta name="description" content="Service de dépannage et remorquage automobile 24h/24, 7j/7 en Île-de-France. Intervention rapide en 30 minutes. Agréé assurances et forces de l'ordre. Appelez le 07 56 97 36 86." />

@@ -4,11 +4,11 @@ import { Phone } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
 
 const SLIDES = [
-  { img: '/hero/2.webp', alt: 'ZDEPANNAGE — Dépannage Mercedes GLS' },
-  { img: '/hero/1.webp', alt: 'ZDEPANNAGE — Double remorquage utilitaires' },
-  { img: '/hero/4.webp', alt: 'ZDEPANNAGE — Remorquage Mercedes AMG' },
-  { img: '/hero/5.webp', alt: 'ZDEPANNAGE — Remorquage Audi Q8' },
-  { img: '/hero/3.webp', alt: 'ZDEPANNAGE — Intervention Renault Trafic' },
+  { id: '2', alt: 'ZDEPANNAGE — Dépannage Mercedes GLS', w: 382, h: 510 },
+  { id: '1', alt: 'ZDEPANNAGE — Double remorquage utilitaires', w: 382, h: 510 },
+  { id: '4', alt: 'ZDEPANNAGE — Remorquage Mercedes AMG', w: 382, h: 510 },
+  { id: '5', alt: 'ZDEPANNAGE — Remorquage Audi Q8', w: 609, h: 633 },
+  { id: '3', alt: 'ZDEPANNAGE — Intervention Renault Trafic', w: 382, h: 510 },
 ];
 
 export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneLink: string }) {
@@ -28,18 +28,24 @@ export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneL
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {SLIDES.map((slide, i) => (
         <div
-          key={i}
+          key={slide.id}
           className="absolute inset-0 transition-opacity duration-[2000ms] ease-in-out"
           style={{ opacity: current === i ? 1 : 0 }}
           aria-hidden={current !== i}
         >
-          <img
-            src={slide.img}
-            alt={slide.alt}
-            className="w-full h-full object-cover"
-            loading={i === 0 ? 'eager' : 'lazy'}
-            fetchPriority={i === 0 ? 'high' : 'auto'}
-          />
+          <picture>
+            <source srcSet={`/hero/${slide.id}.avif`} type="image/avif" />
+            <source srcSet={`/hero/${slide.id}.webp`} type="image/webp" />
+            <img
+              src={`/hero/${slide.id}.webp`}
+              alt={slide.alt}
+              width={slide.w}
+              height={slide.h}
+              className="w-full h-full object-cover"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchPriority={i === 0 ? 'high' : 'auto'}
+            />
+          </picture>
           <div className="absolute inset-0 bg-[var(--bg-dark)]/55" />
         </div>
       ))}

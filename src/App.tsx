@@ -6,8 +6,8 @@ import { StickyBar } from './components/layout/StickyBar';
 import { ScrollToTop } from './components/ScrollToTop';
 import { LanguageProvider, useT } from './i18n/LanguageContext';
 import { useScrollReveal } from './hooks/useScrollReveal';
-
-const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
+// HomePage non lazy : c'est la landing principale (LCP critical path)
+import { HomePage } from './pages/HomePage';
 const ServicesPage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesPage })));
 const TarifsPage = lazy(() => import('./pages/TarifsPage').then(m => ({ default: m.TarifsPage })));
 const ZonePage = lazy(() => import('./pages/ZonePage').then(m => ({ default: m.ZonePage })));
