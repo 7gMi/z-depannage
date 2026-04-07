@@ -37,20 +37,22 @@ export function Zone({ compact }: { compact?: boolean } = {}) {
 
         {!compact && (
           <div className="reveal mb-10">
-            <Suspense fallback={<div className="h-[420px] rounded-2xl bg-[var(--bg-secondary)] animate-pulse" />}>
-              <LeafletMap
-                center={GRIGNY}
-                zoom={9}
-                height="420px"
-                showCircle
-                circleRadius={35000}
-                showMarker={false}
-                showRadar
-                highlight={selected ? { position: selected.coords, label: `${selected.name} (${selected.code})` } : null}
-                flyToZoom={10}
-                ariaLabel="Carte de la zone d'intervention en Île-de-France"
-              />
-            </Suspense>
+            <div style={{ height: '420px', contain: 'layout size' }} className="rounded-2xl overflow-hidden border border-[var(--border-default)] shadow-sm">
+              <Suspense fallback={<div className="h-full bg-[var(--bg-secondary)] animate-pulse" />}>
+                <LeafletMap
+                  center={GRIGNY}
+                  zoom={9}
+                  height="100%"
+                  showCircle
+                  circleRadius={35000}
+                  showMarker={false}
+                  showRadar
+                  highlight={selected ? { position: selected.coords, label: `${selected.name} (${selected.code})` } : null}
+                  flyToZoom={10}
+                  ariaLabel="Carte de la zone d'intervention en Île-de-France"
+                />
+              </Suspense>
+            </div>
           </div>
         )}
 
