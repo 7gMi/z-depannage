@@ -4,15 +4,11 @@ import { Phone } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
 
 const SLIDES = [
-  {
-    bg: 'linear-gradient(135deg, #0F1B2D 0%, #1B3A5C 50%, #0F1B2D 100%)',
-  },
-  {
-    bg: 'linear-gradient(135deg, #1B2E4A 0%, #0F1B2D 50%, #1E3A5F 100%)',
-  },
-  {
-    bg: 'linear-gradient(135deg, #0F1B2D 0%, #152238 50%, #1B2E4A 100%)',
-  },
+  { img: '/hero/2.webp', alt: 'ZDEPANNAGE — Dépannage Mercedes GLS' },
+  { img: '/hero/1.webp', alt: 'ZDEPANNAGE — Double remorquage utilitaires' },
+  { img: '/hero/4.webp', alt: 'ZDEPANNAGE — Remorquage Mercedes AMG' },
+  { img: '/hero/5.webp', alt: 'ZDEPANNAGE — Remorquage Audi Q8' },
+  { img: '/hero/3.webp', alt: 'ZDEPANNAGE — Intervention Renault Trafic' },
 ];
 
 export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneLink: string }) {
@@ -34,10 +30,21 @@ export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneL
         <div
           key={i}
           className="absolute inset-0 transition-opacity duration-[2000ms] ease-in-out"
-          style={{ background: slide.bg, opacity: current === i ? 1 : 0 }}
-        />
+          style={{ opacity: current === i ? 1 : 0 }}
+          aria-hidden={current !== i}
+        >
+          <img
+            src={slide.img}
+            alt={slide.alt}
+            className="w-full h-full object-cover"
+            loading={i === 0 ? 'eager' : 'lazy'}
+            fetchPriority={i === 0 ? 'high' : 'auto'}
+          />
+          <div className="absolute inset-0 bg-[var(--bg-dark)]/55" />
+        </div>
       ))}
 
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-dark)]/90 via-[var(--bg-dark)]/40 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-dark)] via-transparent to-[var(--bg-dark)]/30" />
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.5\'/%3E%3C/svg%3E")' }} />
 
