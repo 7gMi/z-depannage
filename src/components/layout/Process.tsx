@@ -23,6 +23,7 @@ export function Process() {
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveStep(3);
       setHasStarted(true);
       return;
@@ -44,6 +45,7 @@ export function Process() {
 
     timeoutsRef.current.forEach(clearTimeout);
     timeoutsRef.current = [];
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setActiveStep(0);
 
     const t1 = window.setTimeout(() => setActiveStep(1), 5000);

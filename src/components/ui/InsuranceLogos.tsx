@@ -149,6 +149,7 @@ export function LogoSwissLife() {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ALL_INSURANCE_LOGOS = [
   { name: 'AXA', Logo: LogoAXA },
   { name: 'MAIF', Logo: LogoMAIF },
