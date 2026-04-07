@@ -121,18 +121,21 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
   return (
     <>
       <header className="sticky top-0 z-50 bg-[var(--bg-dark)]/40 backdrop-blur-xl border-b border-white/10">
+        {/* Bandeau dispo intégré au top du header (opacity 60%) */}
+        <div className="border-b border-white/5 text-green-400/80 text-xs sm:text-sm font-semibold py-1.5 px-4 flex items-center justify-center gap-2 opacity-60">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+          </span>
+          <span className="whitespace-nowrap">{t('header.available')}</span>
+          <span className="hidden sm:inline opacity-70">•</span>
+          <span className="hidden sm:inline">{t('header.intervention')}</span>
+        </div>
         <div className="max-w-7xl mx-auto px-4">
           {/* Desktop navbar */}
           <div className="hidden lg:flex items-center justify-between h-28">
-            {/* Gauche — liens nav + indicateur dispo */}
+            {/* Gauche — liens nav */}
             <nav className="flex items-center gap-3 flex-1">
-              <span className="flex items-center gap-1.5 text-xs text-green-400 opacity-60 whitespace-nowrap mr-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
-                </span>
-                {t('header.available')}
-              </span>
               {NAV_LEFT.map(({ href, key }) => (
                 <Link
                   key={href}
@@ -204,13 +207,6 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                 height={192}
                 className="h-12 w-auto brightness-0 invert opacity-90"
               />
-              <span className="flex items-center gap-1 text-[10px] text-green-400 opacity-60 whitespace-nowrap">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-400" />
-                </span>
-                {t('header.available')}
-              </span>
             </Link>
 
             <div className="flex items-center gap-3">
