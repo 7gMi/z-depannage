@@ -4,11 +4,11 @@ import { Phone } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
 
 const SLIDES = [
-  { id: '2', alt: 'ZDEPANNAGE — Dépannage Mercedes GLS', w: 382, h: 510 },
-  { id: '1', alt: 'ZDEPANNAGE — Double remorquage utilitaires', w: 382, h: 510 },
-  { id: '4', alt: 'ZDEPANNAGE — Remorquage Mercedes AMG', w: 382, h: 510 },
-  { id: '5', alt: 'ZDEPANNAGE — Remorquage Audi Q8', w: 609, h: 633 },
-  { id: '3', alt: 'ZDEPANNAGE — Intervention Renault Trafic', w: 382, h: 510 },
+  { id: '1', alt: 'ZDEPANNAGE — Mercedes AMG GT 4 portes, intervention nocturne', w: 960, h: 1280 },
+  { id: '2', alt: 'ZDEPANNAGE — Partenaire hôpitaux publics (GHU Paris)', w: 960, h: 1280 },
+  { id: '3', alt: 'ZDEPANNAGE — Intervention nuit Audi RS3 sur plateau', w: 1600, h: 2133 },
+  { id: '4', alt: 'ZDEPANNAGE — Capacité flotte : double chargement Sprinter', w: 1280, h: 960 },
+  { id: '5', alt: 'ZDEPANNAGE — Agréé véhicules électriques (Renault Megane E-Tech)', w: 1600, h: 2133 },
 ];
 
 export function Hero({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneLink: string }) {

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Hero } from '../components/layout/Hero';
 import { Marquee } from '../components/layout/Marquee';
 import { Features } from '../components/layout/Features';
+import { TrustBar } from '../components/layout/TrustBar';
 import { Services } from '../components/layout/Services';
 import { Zone } from '../components/layout/Zone';
 import { Avis } from '../components/layout/Avis';
@@ -71,6 +72,7 @@ export function HomePage({ phoneDisplay, phoneLink }: HomePageProps) {
       <Hero phoneDisplay={phoneDisplay} phoneLink={phoneLink} />
       <Marquee />
       <Features />
+      <TrustBar />
 
       <Services limit={3} />
       <div className="flex justify-center -mt-8 pb-12 bg-[var(--bg-secondary)]">

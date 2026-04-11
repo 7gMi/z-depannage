@@ -105,6 +105,40 @@ export function AboutPage({ phoneDisplay, phoneLink }: AboutPageProps) {
         </div>
       </section>
 
+      {/* Notre atelier — photo authentique backstage */}
+      <section className="relative overflow-hidden">
+        <div className="relative aspect-[16/9] sm:aspect-[21/9] max-h-[600px]">
+          <picture>
+            <source srcSet="/content/atelier.avif" type="image/avif" />
+            <source srcSet="/content/atelier.webp" type="image/webp" />
+            <img
+              src="/content/atelier.webp"
+              alt="L'atelier ZDEPANNAGE à Grigny — Mercedes Classe B et Classe A prêtes à intervenir"
+              loading="lazy"
+              decoding="async"
+              width={1600}
+              height={900}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </picture>
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-dark)] via-[var(--bg-dark)]/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-dark)]/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 flex items-end">
+            <div className="max-w-5xl mx-auto px-4 pb-10 sm:pb-16 w-full">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent-bright)] mb-3">
+                {t('about.workshop.badge')}
+              </p>
+              <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white mb-3 max-w-2xl">
+                {t('about.workshop.title')}
+              </h2>
+              <p className="text-white/75 text-base sm:text-lg max-w-xl leading-relaxed">
+                {t('about.workshop.desc')}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Nos valeurs */}
       <section className="py-16 sm:py-20 bg-[var(--bg-secondary)]">
         <div className="max-w-5xl mx-auto px-4">
