@@ -12,7 +12,7 @@ interface State {
 function getCurrentLang(): Lang {
   try {
     const stored = localStorage.getItem('zdep-lang');
-    if (stored && ['fr', 'ar', 'ro', 'ru'].includes(stored)) return stored as Lang;
+    if (stored && ['fr', 'ar', 'en', 'ru'].includes(stored)) return stored as Lang;
   } catch {
     /* ignore */
   }

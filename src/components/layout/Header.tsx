@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback, type ComponentType } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
-import { FlagFR, FlagSA, FlagRO, FlagRU } from '../ui/Flags';
+import { FlagFR, FlagSA, FlagGB, FlagRU } from '../ui/Flags';
 import { useT } from '../../i18n/LanguageContext';
 import type { Lang } from '../../i18n/translations';
 
@@ -21,7 +21,7 @@ const NAV_ALL = [
 const LANGUAGES: { code: Lang; Flag: ComponentType<{ size?: number }>; label: string }[] = [
   { code: 'fr', Flag: FlagFR, label: 'Français' },
   { code: 'ar', Flag: FlagSA, label: 'العربية' },
-  { code: 'ro', Flag: FlagRO, label: 'Română' },
+  { code: 'en', Flag: FlagGB, label: 'English' },
   { code: 'ru', Flag: FlagRU, label: 'Русский' },
 ];
 
@@ -163,7 +163,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                 alt="ZDEPANNAGE"
                 width={192}
                 height={192}
-                className="h-28 w-auto brightness-0 invert group-hover:opacity-90 transition-all duration-300"
+                className="h-[10.5rem] w-auto brightness-0 invert group-hover:opacity-90 transition-all duration-300"
               />
             </Link>
 
@@ -205,7 +205,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                 alt="ZDEPANNAGE"
                 width={192}
                 height={192}
-                className="h-12 w-auto brightness-0 invert opacity-90"
+                className="h-[4.5rem] w-auto brightness-0 invert opacity-90"
               />
             </Link>
 
@@ -258,7 +258,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
             }}
             aria-label="ZDEPANNAGE — Accueil"
           >
-            <img src="/logo-zdepannage.png" alt="ZDEPANNAGE" width={192} height={192} className="h-10 w-auto brightness-0 invert opacity-90" />
+            <img src="/logo-zdepannage.png" alt="ZDEPANNAGE" width={192} height={192} className="h-[3.75rem] w-auto brightness-0 invert opacity-90" />
           </Link>
           <button onClick={() => setIsOpen(false)} className="p-2 text-white" aria-label={t('aria.closeMenu')}>
             <X size={22} />

@@ -9,7 +9,7 @@ function TestComponent() {
     <div>
       <span data-testid="lang">{lang}</span>
       <span data-testid="text">{t('nav.services')}</span>
-      <button onClick={() => setLang('ro')}>Switch RO</button>
+      <button onClick={() => setLang('en')}>Switch EN</button>
       <button onClick={() => setLang('ar')}>Switch AR</button>
       <button onClick={() => setLang('ru')}>Switch RU</button>
     </div>
@@ -31,11 +31,11 @@ describe('LanguageContext', () => {
     expect(screen.getByTestId('text')).toHaveTextContent('Services');
   });
 
-  it('switches to Romanian', () => {
+  it('switches to English', () => {
     render(<TestComponent />, { wrapper: Wrapper });
-    fireEvent.click(screen.getByText('Switch RO'));
-    expect(screen.getByTestId('lang')).toHaveTextContent('ro');
-    expect(screen.getByTestId('text')).toHaveTextContent('Servicii');
+    fireEvent.click(screen.getByText('Switch EN'));
+    expect(screen.getByTestId('lang')).toHaveTextContent('en');
+    expect(screen.getByTestId('text')).toHaveTextContent('Services');
   });
 
   it('switches to Arabic', () => {

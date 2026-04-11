@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { translations, type Lang } from '../i18n/translations';
 
-const LANGS: Lang[] = ['fr', 'ar', 'ro', 'ru'];
+const LANGS: Lang[] = ['fr', 'ar', 'en', 'ru'];
 
 describe('Translations', () => {
   it('should have all 4 languages', () => {

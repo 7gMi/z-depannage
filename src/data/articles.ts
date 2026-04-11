@@ -15,7 +15,7 @@ export interface Article {
   content: string[];
   i18n?: {
     ar?: ArticleI18n;
-    ro?: ArticleI18n;
+    en?: ArticleI18n;
     ru?: ArticleI18n;
   };
 }
