@@ -14,6 +14,7 @@ const TarifsPage = lazy(() => import('./pages/TarifsPage').then(m => ({ default:
 const ZonePage = lazy(() => import('./pages/ZonePage').then(m => ({ default: m.ZonePage })));
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
+const ProfessionnelsPage = lazy(() => import('./pages/ProfessionnelsPage').then(m => ({ default: m.ProfessionnelsPage })));
 const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.BlogPage })));
 const ArticlePage = lazy(() => import('./pages/ArticlePage').then(m => ({ default: m.ArticlePage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
@@ -43,6 +44,7 @@ function AppContent() {
             <Route path="/blog" element={<BlogPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
             <Route path="/blog/:slug" element={<ArticlePage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
             <Route path="/contact" element={<ContactPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+            <Route path="/professionnels" element={<ProfessionnelsPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
             <Route path="*" element={<NotFoundPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
           </Routes>
         </Suspense>

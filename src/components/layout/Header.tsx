@@ -149,6 +149,19 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                   {t(key)}
                 </Link>
               ))}
+              <Link
+                to="/professionnels"
+                className={`text-sm font-semibold transition-colors duration-200 whitespace-nowrap flex items-center ${
+                  location.pathname === '/professionnels'
+                    ? 'text-[var(--accent-bright)]'
+                    : 'text-white/70 hover:text-[var(--accent-bright)]'
+                }`}
+              >
+                {t('nav.pro')}
+                <span className="bg-blue-500/10 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 rounded-full text-xs font-bold ml-1">
+                  {t('nav.pro.badge')}
+                </span>
+              </Link>
             </nav>
 
             {/* Centre — logo */}
@@ -297,6 +310,20 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                   {t(key)}
                 </Link>
               ))}
+              <Link
+                to="/professionnels"
+                onClick={() => setIsOpen(false)}
+                className={`px-4 py-3 rounded-xl font-bold text-base uppercase tracking-wide transition-colors flex items-center ${
+                  location.pathname === '/professionnels'
+                    ? 'text-[var(--accent-bright)] bg-white/5'
+                    : 'text-white/80 hover:bg-white/5'
+                }`}
+              >
+                {t('nav.pro')}
+                <span className="bg-blue-500/10 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 rounded-full text-xs font-bold ml-2">
+                  {t('nav.pro.badge')}
+                </span>
+              </Link>
             </nav>
 
             {/* Langues en grille 2x2 */}
