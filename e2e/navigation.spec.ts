@@ -42,8 +42,8 @@ test.describe('Desktop navigation', () => {
     await page.goto('/');
     await expect(page.locator('h1')).toBeVisible({ timeout: 10000 });
     await page.locator('button[aria-haspopup="listbox"]').click();
-    await page.locator('button[role="option"]:has-text("Română")').click();
-    await expect(page.locator('body')).toContainText('Servicii', { timeout: 5000 });
+    await page.locator('button[role="option"]:has-text("English")').click();
+    await expect(page.locator('body')).toContainText('Towing', { timeout: 5000 });
   });
 });
 
@@ -67,7 +67,7 @@ test.describe('Mobile navigation', () => {
     await page.goto('/');
     await expect(page.locator('h1')).toBeVisible({ timeout: 10000 });
     await page.locator('button[aria-label="Ouvrir le menu"]').click();
-    await page.locator('[role="dialog"] button:has-text("Română")').click();
-    await expect(page.locator('body')).toContainText('Servicii', { timeout: 5000 });
+    await page.locator('[role="dialog"] button:has-text("English")').click();
+    await expect(page.locator('body')).toContainText('Towing', { timeout: 5000 });
   });
 });
