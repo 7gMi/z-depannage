@@ -47,6 +47,13 @@ export function Zone({ compact }: { compact?: boolean } = {}) {
                   circleRadius={35000}
                   showMarker={false}
                   showRadar
+                  hotspots={DEPARTEMENTS.map((d) => ({
+                    position: d.coords,
+                    label: `${d.name} (${d.code})`,
+                    code: d.code,
+                    eta: d.eta,
+                    isBase: d.highlight,
+                  }))}
                   highlight={selected ? { position: selected.coords, label: `${selected.name} (${selected.code})` } : null}
                   flyToZoom={10}
                   ariaLabel="Carte de la zone d'intervention en Île-de-France"

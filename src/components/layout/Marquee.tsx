@@ -15,7 +15,7 @@ export function Marquee() {
   const repeated = [...ITEMS_KEYS, ...ITEMS_KEYS, ...ITEMS_KEYS];
 
   return (
-    <div className="overflow-hidden bg-[var(--bg-dark)] border-y border-white/5 py-4">
+    <div className="marquee-fade overflow-hidden bg-[var(--bg-dark)] border-y border-white/5 py-4">
       <div className="animate-marquee flex whitespace-nowrap">
         {repeated.map((item, i) => (
           <span key={i} className="inline-flex items-center gap-2 mx-8">

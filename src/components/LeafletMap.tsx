@@ -38,6 +38,20 @@ const radarIcon = L.divIcon({
   iconAnchor: [10, 10],
 });
 
+// Hotspot pulsant par département — orange subtil
+function hotspotIcon(label: string, isBase = false) {
+  const color = isBase ? '#EA580C' : '#FB923C';
+  const size = isBase ? 14 : 10;
+  const dotSize = isBase ? 6 : 5;
+  return L.divIcon({
+    className: 'zdep-hotspot',
+    html: `<div class="zdep-hotspot-wrap" style="width:${size}px;height:${size}px;"><span class="zdep-hotspot-ping" style="background:${color};"></span><span class="zdep-hotspot-dot" style="background:${color};width:${dotSize}px;height:${dotSize}px;"></span><span class="zdep-hotspot-label">${label}</span></div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+    popupAnchor: [0, -size],
+  });
+}
+
 // Pin bleu pour départements highlight (différencié du pin orange principal)
 const highlightIcon = L.divIcon({
   className: 'zdep-pin-highlight',
@@ -46,6 +60,14 @@ const highlightIcon = L.divIcon({
   iconAnchor: [20, 40],
   popupAnchor: [0, -40],
 });
+
+interface Hotspot {
+  position: [number, number];
+  label: string;
+  code?: string;
+  eta?: number;
+  isBase?: boolean;
+}
 
 interface LeafletMapProps {
   center: [number, number];
@@ -59,6 +81,7 @@ interface LeafletMapProps {
   ariaLabel?: string;
   highlight?: { position: [number, number]; label: string } | null;
   flyToZoom?: number;
+  hotspots?: Hotspot[];
 }
 
 export default function LeafletMap({
@@ -73,6 +96,7 @@ export default function LeafletMap({
   ariaLabel = 'Carte interactive',
   highlight = null,
   flyToZoom = 11,
+  hotspots = [],
 }: LeafletMapProps) {
   return (
     <div
@@ -110,6 +134,18 @@ export default function LeafletMap({
             <Popup>{popupText}</Popup>
           </Marker>
         )}
+        {hotspots.map((h) => (
+          <Marker
+            key={`${h.position[0]}-${h.position[1]}`}
+            position={h.position}
+            icon={hotspotIcon(h.code ?? '', h.isBase)}
+          >
+            <Popup>
+              {h.label}
+              {h.eta ? ` — ~${h.eta} min` : ''}
+            </Popup>
+          </Marker>
+        ))}
         {highlight && (
           <Marker position={highlight.position} icon={highlightIcon}>
             <Popup>{highlight.label}</Popup>

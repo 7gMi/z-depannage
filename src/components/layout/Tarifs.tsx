@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Shield, AlertTriangle, Clock, Info } from 'lucide-react';
+import { Shield, AlertTriangle, Clock, Info, ExternalLink, Phone, Wrench, Car, Truck } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
 
 type Tab = 'autoroute' | 'police';
@@ -57,8 +57,24 @@ export function Tarifs() {
   return (
     <section id="tarifs" className="py-16 sm:py-20">
       <div className="max-w-6xl mx-auto px-4">
-        {/* En-tête */}
+        {/* En-tête + badge officiel */}
         <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/8 mb-6 tarifs-badge-pulse">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true" />
+            <span className="text-[11px] uppercase tracking-wider font-bold text-[var(--accent-hover)]">
+              {t('tarifs.badge')}
+            </span>
+            <a
+              href="https://www.legifrance.gouv.fr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[10px] text-[var(--text-tertiary)] hover:text-[var(--accent)] underline-offset-2 hover:underline transition-colors"
+              aria-label={t('tarifs.badge.link')}
+            >
+              {t('tarifs.badge.link')}
+              <ExternalLink size={10} aria-hidden="true" />
+            </a>
+          </div>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4">
             {t('tarifs.title')}
           </h2>
@@ -68,9 +84,11 @@ export function Tarifs() {
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-8" role="tablist" aria-label={t('tarifs.title')}>
           <div className="inline-flex rounded-xl bg-[var(--bg-secondary)] p-1 gap-1">
             <button
+              role="tab"
+              aria-selected={tab === 'autoroute'}
               onClick={() => setTab('autoroute')}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
                 tab === 'autoroute'
@@ -82,6 +100,8 @@ export function Tarifs() {
               {t('tarifs.tab.highway')}
             </button>
             <button
+              role="tab"
+              aria-selected={tab === 'police'}
               onClick={() => setTab('police')}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
                 tab === 'police'
@@ -192,7 +212,10 @@ export function Tarifs() {
           <div className="space-y-8">
             {/* PTAC < 1800 kg */}
             <div>
-              <h3 className="font-heading font-bold text-lg text-[var(--text-primary)] mb-3">
+              <h3 className="font-heading font-bold text-lg text-[var(--text-primary)] mb-3 flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20" aria-hidden="true">
+                  <Car size={16} className="text-[var(--accent)]" />
+                </span>
                 {t('tarifs.vehiculesLegers')} <span className="text-[var(--text-tertiary)] font-normal text-sm">({t('tarifs.ptacLightShort')})</span>
               </h3>
               <div className="overflow-x-auto rounded-2xl border border-[var(--border-default)] shadow-sm">
@@ -222,7 +245,10 @@ export function Tarifs() {
 
             {/* PTAC > 1800 kg */}
             <div>
-              <h3 className="font-heading font-bold text-lg text-[var(--text-primary)] mb-3">
+              <h3 className="font-heading font-bold text-lg text-[var(--text-primary)] mb-3 flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20" aria-hidden="true">
+                  <Truck size={16} className="text-[var(--accent)]" />
+                </span>
                 {t('tarifs.vehiculesLourds')} <span className="text-[var(--text-tertiary)] font-normal text-sm">({t('tarifs.ptacHeavyShort')})</span>
               </h3>
               <div className="overflow-x-auto rounded-2xl border border-[var(--border-default)] shadow-sm">
@@ -262,7 +288,10 @@ export function Tarifs() {
 
         {/* Prestations complémentaires — commun aux deux tabs */}
         <div className="mt-10">
-          <h3 className="font-heading font-bold text-xl text-[var(--text-primary)] mb-4 text-center">
+          <h3 className="font-heading font-bold text-xl text-[var(--text-primary)] mb-4 text-center flex items-center justify-center gap-2">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20" aria-hidden="true">
+              <Wrench size={16} className="text-[var(--accent)]" />
+            </span>
             {t('tarifs.extras')}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -285,6 +314,26 @@ export function Tarifs() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* CTA final */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-5 p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[var(--bg-dark)] to-[var(--bg-secondary)] border border-[var(--border-default)]">
+          <div className="text-center sm:text-left">
+            <p className="font-heading font-extrabold text-lg text-white mb-1">
+              {t('tarifs.cta.title')}
+            </p>
+            <p className="text-sm text-white/70 leading-relaxed">
+              {t('tarifs.cta.desc')}
+            </p>
+          </div>
+          <a
+            href="tel:+33756973686"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-heading font-extrabold text-white text-base whitespace-nowrap transition-all duration-200 hover:-translate-y-0.5 min-h-[48px]"
+            style={{ background: 'var(--gradient-cta)', boxShadow: 'var(--shadow-orange)' }}
+          >
+            <Phone size={18} className="motion-safe:animate-phone-ring" />
+            07 56 97 36 86
+          </a>
         </div>
       </div>
     </section>

@@ -32,8 +32,9 @@ export function CallbackForm() {
   }
 
   return (
-    <section className="py-16 sm:py-20 bg-[var(--bg-dark)]">
-      <div className="max-w-2xl mx-auto px-4">
+    <section className="relative py-16 sm:py-20 bg-[var(--bg-dark)] overflow-hidden">
+      <div className="absolute inset-0 pattern-dots-orange pointer-events-none" aria-hidden="true" />
+      <div className="relative max-w-2xl mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">{t('callback.title')}</h2>
           <p className="text-white/75">{t('callback.subtitle')}</p>

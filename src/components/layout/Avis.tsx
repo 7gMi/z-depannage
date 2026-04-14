@@ -1,12 +1,18 @@
+import { useEffect, useRef } from 'react';
 import { Star } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
 import { AVIS } from '../../data/avis';
 
-function Stars({ size = 14 }: { size?: number }) {
+function Stars({ size = 14, animated = false }: { size?: number; animated?: boolean }) {
   return (
     <div className="flex gap-0.5" role="img" aria-label="5 étoiles sur 5">
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} size={size} className="fill-yellow-400 text-yellow-400" aria-hidden="true" />
+        <Star
+          key={i}
+          size={size}
+          className={`fill-yellow-400 text-yellow-400${animated ? ' star-anim' : ''}`}
+          aria-hidden="true"
+        />
       ))}
     </div>
   );
@@ -15,6 +21,29 @@ function Stars({ size = 14 }: { size?: number }) {
 export function Avis({ limit }: { limit?: number } = {}) {
   const { t } = useT();
   const items = limit ? AVIS.slice(0, limit) : AVIS;
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const root = gridRef.current;
+    if (!root) return;
+    const cards = root.querySelectorAll<HTMLElement>('.avis-card');
+    if (!cards.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: '0px 0px -50px 0px' },
+    );
+
+    cards.forEach((card) => io.observe(card));
+    return () => io.disconnect();
+  }, [items.length]);
 
   return (
     <section id="avis" className="py-16 sm:py-20 bg-[var(--bg-secondary)]">
@@ -41,16 +70,16 @@ export function Avis({ limit }: { limit?: number } = {}) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
           {items.map(({ name, initial, gradient, text, date }) => (
-            <div key={name} className="reveal card-hover bg-[var(--bg-card)] rounded-2xl border border-[var(--border-default)] p-6">
+            <div key={name} className="avis-card reveal card-hover bg-[var(--bg-card)] rounded-2xl border border-[var(--border-default)] p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style={{ background: gradient }}>
                   {initial}
                 </div>
                 <div>
                   <p className="font-semibold text-sm text-[var(--text-primary)]">{name}</p>
-                  <Stars />
+                  <Stars animated />
                 </div>
               </div>
               <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-3">"{text}"</p>

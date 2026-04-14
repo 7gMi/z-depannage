@@ -18,10 +18,14 @@ const LOCAL_BUSINESS = {
   '@context': 'https://schema.org',
   '@type': 'AutoRepair',
   name: 'ZDEPANNAGE',
+  legalName: 'ZDEPANNAGE SAS',
   description: "Service de dépannage et remorquage automobile 24h/24, 7j/7 en Île-de-France.",
   url: 'https://z-depannage.fr',
   telephone: '+33756973686',
   email: '',
+  foundingDate: '2023-10-28',
+  vatID: 'FR84981024268',
+  taxID: '98102426800014',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '7 BIS Route de Corbeil',
@@ -72,6 +76,7 @@ export function HomePage({ phoneDisplay, phoneLink }: HomePageProps) {
       <Hero phoneDisplay={phoneDisplay} phoneLink={phoneLink} />
       <Marquee />
       <Features />
+      <div className="section-divider-glow" aria-hidden="true" />
       <TrustBar />
 
       <Services limit={3} />
@@ -98,7 +103,9 @@ export function HomePage({ phoneDisplay, phoneLink }: HomePageProps) {
         </Link>
       </div>
 
+      <div className="section-divider-glow" aria-hidden="true" />
       <Zone compact />
+      <div className="section-divider-glow" aria-hidden="true" />
       <CallbackForm />
       <CTABanner phoneDisplay={phoneDisplay} phoneLink={phoneLink} />
       <Contact phoneDisplay={phoneDisplay} phoneLink={phoneLink} />

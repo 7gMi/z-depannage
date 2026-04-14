@@ -219,6 +219,302 @@ html { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; f
 .drawer-stagger > *:nth-child(6) { animation-delay: 350ms; }
 .drawer-stagger > *:nth-child(7) { animation-delay: 400ms; }
 
+/* Phase 1 P0 quick wins — HomePage + AboutPage */
+
+/* #1 Marquee fade gradient edges */
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+/* #2 Pattern dots orange (Features + CallbackForm bg) */
+.pattern-dots-orange {
+  background-image: radial-gradient(circle, rgba(255, 107, 43, 0.09) 1px, transparent 1.5px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 40%, transparent 100%);
+}
+@media (max-width: 640px) {
+  .pattern-dots-orange { background-size: 18px 18px; }
+}
+@media (forced-colors: active) {
+  .pattern-dots-orange { display: none; }
+}
+
+/* #4 Hover rotate+scale icons */
+.icon-hover {
+  transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+}
+.icon-hover-parent:hover .icon-hover,
+.icon-hover-parent:focus-within .icon-hover {
+  transform: rotate(-6deg) scale(1.12);
+}
+@media (hover: none) {
+  .icon-hover-parent:active .icon-hover { transform: rotate(-6deg) scale(1.12); }
+}
+[dir="rtl"] .icon-hover-parent:hover .icon-hover,
+[dir="rtl"] .icon-hover-parent:focus-within .icon-hover {
+  transform: rotate(6deg) scale(1.12);
+}
+
+/* #5 Stars cascade pop animation */
+@keyframes starPop {
+  0% { opacity: 0; transform: scale(0.3) rotate(-20deg); }
+  60% { transform: scale(1.15) rotate(5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+.avis-card.in-view .star-anim {
+  animation: starPop 400ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.avis-card.in-view .star-anim:nth-child(1) { animation-delay: 0ms; }
+.avis-card.in-view .star-anim:nth-child(2) { animation-delay: 60ms; }
+.avis-card.in-view .star-anim:nth-child(3) { animation-delay: 120ms; }
+.avis-card.in-view .star-anim:nth-child(4) { animation-delay: 180ms; }
+.avis-card.in-view .star-anim:nth-child(5) { animation-delay: 240ms; }
+
+/* #8 Grain overlay SVG turbulence */
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+@media (max-width: 640px) {
+  .grain-overlay::after { opacity: 0.04; }
+}
+@media (forced-colors: active) {
+  .grain-overlay::after { display: none; }
+}
+
+/* #10 Radial spotlight About hero */
+.about-hero-spotlight::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 140%;
+  background: radial-gradient(ellipse at center, rgba(255, 107, 43, 0.18) 0%, rgba(255, 107, 43, 0.08) 30%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(40px);
+}
+@media (max-width: 640px) {
+  .about-hero-spotlight::before {
+    filter: blur(20px);
+    background: radial-gradient(ellipse at center, rgba(255, 107, 43, 0.10), transparent 60%);
+  }
+}
+@media (forced-colors: active) {
+  .about-hero-spotlight::before { display: none; }
+}
+
+/* RTL marquee direction inversion */
+[dir="rtl"] .animate-marquee { animation-direction: reverse; }
+
+/* Phase 2 — section dividers glow + manifeste + timeline + mesh gradient */
+
+/* Section divider glow orange */
+.section-divider-glow {
+  height: 1px;
+  position: relative;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 107, 43, 0.4) 50%, transparent 100%);
+}
+.section-divider-glow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -40px;
+  bottom: -40px;
+  background: radial-gradient(ellipse 30% 100% at 50% 50%, rgba(255, 107, 43, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Manifeste — citation géante avec drop cap */
+.manifeste-quote {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.manifeste-quote::before {
+  content: '\201C';
+  display: inline-block;
+  color: var(--accent);
+  opacity: 0.35;
+  margin-right: 0.05em;
+  line-height: 0;
+  vertical-align: -0.18em;
+  font-size: 1.3em;
+}
+.manifeste-quote::after {
+  content: '\201D';
+  display: inline-block;
+  color: var(--accent);
+  opacity: 0.35;
+  margin-left: 0.05em;
+  line-height: 0;
+  vertical-align: -0.18em;
+  font-size: 1.3em;
+}
+[dir="rtl"] .manifeste-quote::before { content: '\201E'; }
+[dir="rtl"] .manifeste-quote::after { content: '\201C'; }
+
+/* Timeline — ligne verticale gradient orange + dots animés */
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255, 107, 43, 0.15) 8%, rgba(255, 107, 43, 0.8) 50%, rgba(255, 107, 43, 0.15) 92%, transparent 100%);
+}
+.timeline-item {
+  position: relative;
+}
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255, 107, 43, 0.18), 0 0 18px rgba(255, 107, 43, 0.45);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.timeline-item.reveal.visible .timeline-dot {
+  animation: timelinePulse 900ms ease-out;
+}
+.timeline-item:hover .timeline-dot,
+.timeline-item:focus-within .timeline-dot {
+  transform: scale(1.25);
+  box-shadow: 0 0 0 6px rgba(255, 107, 43, 0.22), 0 0 28px rgba(255, 107, 43, 0.7);
+}
+@keyframes timelinePulse {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Hero mesh gradient CSS conique animé */
+.hero-mesh-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(255, 107, 43, 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(255, 140, 80, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 50% 100%, rgba(255, 107, 43, 0.15) 0%, transparent 70%);
+  opacity: 0.85;
+  mix-blend-mode: screen;
+  animation: meshDrift 22s ease-in-out infinite alternate;
+  z-index: 2;
+}
+@keyframes meshDrift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(2%, -1.5%, 0) scale(1.04); }
+  100% { transform: translate3d(-1.5%, 1%, 0) scale(1.02); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mesh-gradient { animation: none; }
+  .timeline-item.reveal.visible .timeline-dot { animation: none; }
+  .timeline-item:hover .timeline-dot,
+  .timeline-item:focus-within .timeline-dot { transform: none; }
+}
+
+/* Hotspots pulsants carte IDF */
+.zdep-hotspot { background: transparent !important; border: none !important; }
+.zdep-hotspot-wrap { position: relative; display: inline-block; }
+.zdep-hotspot-ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  opacity: 0.55;
+  animation: hotspotPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.zdep-hotspot-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 8px rgba(234, 88, 12, 0.7);
+}
+.zdep-hotspot-label {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  color: #fff;
+  background: rgba(234, 88, 12, 0.9);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+}
+@keyframes hotspotPing {
+  0% { transform: scale(1); opacity: 0.55; }
+  75%, 100% { transform: scale(3); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zdep-hotspot-ping { animation: none; opacity: 0.3; }
+}
+
+/* B2B Process — ghost outline numbers + animated SVG line */
+.step-ghost {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: clamp(6rem, 10vw, 9.5rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.09);
+  letter-spacing: -0.04em;
+  user-select: none;
+  pointer-events: none;
+}
+
+.steps-line path {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  transition: stroke-dashoffset 1800ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.steps-line.visible path { stroke-dashoffset: 0; }
+
+.step-dot { transition: transform 300ms ease, box-shadow 300ms ease; }
+.step-card:hover .step-dot,
+.step-card:focus-within .step-dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 6px rgba(255, 107, 43, 0.18), 0 0 22px rgba(255, 107, 43, 0.55);
+}
+.step-card:hover .step-kpi { text-shadow: 0 0 18px rgba(255, 107, 43, 0.55); }
+.step-kpi { transition: text-shadow 300ms ease; }
+
+/* Tarifs — toggle segmented control + accordion */
+.tarifs-badge-pulse {
+  box-shadow: 0 0 0 0 rgba(255, 107, 43, 0.55);
+  animation: tarifsBadgePulse 2.6s ease-out infinite;
+}
+@keyframes tarifsBadgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 43, 0); }
+  50% { box-shadow: 0 0 0 5px rgba(255, 107, 43, 0.2); }
+}
+
+details.tarifs-accordion[open] > summary .tarifs-chevron { transform: rotate(180deg); }
+details.tarifs-accordion > summary .tarifs-chevron { transition: transform 250ms ease; }
+details.tarifs-accordion > summary { list-style: none; cursor: pointer; }
+details.tarifs-accordion > summary::-webkit-details-marker { display: none; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -230,4 +526,6 @@ html { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; f
   .animate-phone-ring { animation: none; }
   .animate-cta-pulse { animation: none; }
   .hero-kenburns { animation: none; }
+  .steps-line path { stroke-dashoffset: 0; }
+  .tarifs-badge-pulse { animation: none; }
 }
