@@ -38,9 +38,21 @@
   </url>
   <url>
     <loc>https://z-depannage.fr/contact</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://z-depannage.fr/professionnels</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://z-depannage.fr/politique-confidentialite</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://z-depannage.fr/blog/que-faire-panne-autoroute</loc>
