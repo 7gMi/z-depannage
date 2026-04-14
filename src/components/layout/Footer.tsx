@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Clock } from 'lucide-react';
+import { Phone, MapPin, Clock, Mail } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
 
 export function Footer({ phoneDisplay, phoneLink }: { phoneDisplay: string; phoneLink: string }) {
@@ -20,6 +20,9 @@ export function Footer({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
             <div className="flex flex-col gap-2.5 text-sm">
               <a href={phoneLink} className="flex items-center gap-2 hover:text-[var(--accent-bright)] transition-colors">
                 <Phone size={14} /> {phoneDisplay}
+              </a>
+              <a href="mailto:contact@z-depannage.fr" className="flex items-center gap-2 hover:text-[var(--accent-bright)] transition-colors">
+                <Mail size={14} /> contact@z-depannage.fr
               </a>
               <span className="flex items-center gap-2">
                 <MapPin size={14} /> 7 BIS Rte de Corbeil, 91350 Grigny

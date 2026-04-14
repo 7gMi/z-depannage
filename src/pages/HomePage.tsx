@@ -22,7 +22,7 @@ const LOCAL_BUSINESS = {
   description: "Service de dépannage et remorquage automobile 24h/24, 7j/7 en Île-de-France.",
   url: 'https://z-depannage.fr',
   telephone: '+33756973686',
-  email: '',
+  email: 'contact@z-depannage.fr',
   foundingDate: '2023-10-28',
   vatID: 'FR84981024268',
   taxID: '98102426800014',

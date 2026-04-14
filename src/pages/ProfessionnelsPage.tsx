@@ -29,6 +29,7 @@ const B2B_SERVICE_JSONLD = {
     legalName: 'ZDEPANNAGE SAS',
     url: 'https://z-depannage.fr',
     telephone: '+33756973686',
+    email: 'contact@z-depannage.fr',
     foundingDate: '2023-10-28',
     vatID: 'FR84981024268',
     taxID: '98102426800014',
