@@ -143,7 +143,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                   className={`text-sm font-semibold transition-colors duration-200 whitespace-nowrap relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-[var(--accent)] after:transition-all after:duration-300 ${
                     location.pathname === href
                       ? 'text-[var(--accent-bright)] after:w-full'
-                      : 'text-white/70 hover:text-[var(--accent-bright)] after:w-0 hover:after:w-full'
+                      : 'text-white/90 hover:text-[var(--accent-bright)] after:w-0 hover:after:w-full'
                   }`}
                 >
                   {t(key)}
@@ -154,11 +154,11 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                 className={`text-sm font-semibold transition-colors duration-200 whitespace-nowrap flex items-center ${
                   location.pathname === '/professionnels'
                     ? 'text-[var(--accent-bright)]'
-                    : 'text-white/70 hover:text-[var(--accent-bright)]'
+                    : 'text-white/90 hover:text-[var(--accent-bright)]'
                 }`}
               >
                 {t('nav.pro')}
-                <span className="bg-blue-500/10 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 rounded-full text-xs font-bold ml-1">
+                <span className="bg-blue-500/20 text-blue-200 border border-blue-500/40 px-2.5 py-0.5 rounded-full text-xs font-bold ml-1">
                   {t('nav.pro.badge')}
                 </span>
               </Link>
@@ -187,7 +187,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                 className={`text-sm font-semibold transition-colors duration-200 whitespace-nowrap relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-[var(--accent)] after:transition-all after:duration-300 mr-1 ${
                   location.pathname === '/contact'
                     ? 'text-[var(--accent-bright)] after:w-full'
-                    : 'text-white/70 hover:text-[var(--accent-bright)] after:w-0 hover:after:w-full'
+                    : 'text-white/90 hover:text-[var(--accent-bright)] after:w-0 hover:after:w-full'
                 }`}
               >
                 {t('nav.contact')}
@@ -320,7 +320,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                 }`}
               >
                 {t('nav.pro')}
-                <span className="bg-blue-500/10 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 rounded-full text-xs font-bold ml-2">
+                <span className="bg-blue-500/20 text-blue-200 border border-blue-500/40 px-2.5 py-0.5 rounded-full text-xs font-bold ml-2">
                   {t('nav.pro.badge')}
                 </span>
               </Link>
