@@ -28,7 +28,7 @@ export function TrustBar() {
     <section className="py-16 sm:py-20 bg-[var(--bg-secondary)]">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-10">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)] mb-3">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#C4461B] mb-3">
             {t('trust.badge')}
           </p>
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[var(--text-primary)]">
