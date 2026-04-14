@@ -39,15 +39,39 @@ export function Footer({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
             </div>
           </div>
         </div>
-        <div className="border-t border-white/10 pt-6 text-center text-xs text-white/75">
-          {t('footer.rights')}
+        <div className="border-t border-white/10 pt-6 text-center text-xs text-white/75 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+          <span>{t('footer.rights')}</span>
+          <span className="hidden sm:inline text-white/30" aria-hidden="true">•</span>
+          <Link to="/politique-confidentialite" className="hover:text-[var(--accent-bright)] transition-colors underline-offset-4 hover:underline">
+            {t('footer.privacy')}
+          </Link>
         </div>
-        <div className="border-t border-white/5 mt-4 pt-4">
-          <a href="https://mihaigaina.dev" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-2 text-xs text-white/75 hover:text-white/75 transition-colors">
+        <div className="border-t border-white/5 mt-4 pt-4 flex flex-col items-center gap-2.5">
+          {/* Line 1 — Designed by Mihai Gaina */}
+          <a
+            href="https://mihaigaina.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-center gap-2 text-xs text-white/75 hover:text-white transition-colors"
+          >
             <span className="inline-block h-px w-6 bg-white/20 transition-all duration-300 group-hover:w-12 group-hover:bg-[var(--accent-bright)]" />
-            <span>Designed by <span className="font-medium text-white/75 group-hover:text-[var(--accent-bright)] transition-colors">Mihai Gaina</span></span>
+            <span>{t('footer.designedBy')} <span className="font-medium text-white group-hover:text-[var(--accent-bright)] transition-colors">Mihai Gaina</span></span>
             <span className="group-hover:translate-x-0.5 transition-transform">&rarr;</span>
             <span className="inline-block h-px w-6 bg-white/20 transition-all duration-300 group-hover:w-12 group-hover:bg-[var(--accent-bright)]" />
+          </a>
+
+          {/* Line 2 — CTA freelance lead */}
+          <a
+            href="https://mihaigaina.dev/#contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-1.5 text-[11px] text-white/40 hover:text-[var(--accent-bright)] transition-colors"
+          >
+            <span>{t('footer.freelance.question')}</span>
+            <span className="font-semibold underline underline-offset-4 decoration-white/20 group-hover:decoration-[var(--accent-bright)] transition-colors">
+              {t('footer.freelance.cta')}
+            </span>
+            <span className="group-hover:translate-x-0.5 transition-transform">&rarr;</span>
           </a>
         </div>
       </div>

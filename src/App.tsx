@@ -18,6 +18,7 @@ const ProfessionnelsPage = lazy(() => import('./pages/ProfessionnelsPage').then(
 const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.BlogPage })));
 const ArticlePage = lazy(() => import('./pages/ArticlePage').then(m => ({ default: m.ArticlePage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage').then(m => ({ default: m.PrivacyPage })));
 
 const PHONE = '0756973686';
 const PHONE_DISPLAY = '07 56 97 36 86';
@@ -45,6 +46,7 @@ function AppContent() {
             <Route path="/blog/:slug" element={<ArticlePage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
             <Route path="/contact" element={<ContactPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
             <Route path="/professionnels" element={<ProfessionnelsPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
+            <Route path="/politique-confidentialite" element={<PrivacyPage />} />
             <Route path="*" element={<NotFoundPage phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />} />
           </Routes>
         </Suspense>
