@@ -192,7 +192,7 @@ export function AboutPage({ phoneDisplay, phoneLink }: AboutPageProps) {
             {t('about.manifest.kicker')}
           </p>
           <blockquote className="mb-8">
-            <p className="manifeste-quote text-3xl sm:text-5xl lg:text-6xl text-white leading-tight">
+            <p className="manifeste-quote text-2xl sm:text-4xl lg:text-6xl text-white leading-tight px-2">
               {t('about.manifest.quote')}
             </p>
           </blockquote>
@@ -502,19 +502,19 @@ export function AboutPage({ phoneDisplay, phoneLink }: AboutPageProps) {
             {t('about.hotline.kicker')}
           </p>
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-8 tracking-tight">
-            {t('about.hotline.title')}
+            <span className="block">{t('about.hotline.title1')}</span>
+            <span className="block">{t('about.hotline.title2')}</span>
           </h2>
           <a
             href={phoneLink}
-            className="group inline-flex items-baseline gap-3 sm:gap-4 mb-8 hover:scale-[1.02] active:scale-[0.98] transition-transform"
+            className="group inline-flex items-center justify-center gap-2 sm:gap-4 mb-8 hover:scale-[1.02] active:scale-[0.98] transition-transform max-w-full"
             aria-label={phoneDisplay}
           >
             <Phone
-              size={42}
-              className="text-[var(--accent)] motion-safe:animate-phone-ring self-center"
+              className="text-[var(--accent)] motion-safe:animate-phone-ring w-7 h-7 sm:w-10 sm:h-10 flex-shrink-0"
               aria-hidden="true"
             />
-            <span className="font-heading font-extrabold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white tabular-nums leading-none tracking-tight">
+            <span className="font-heading font-extrabold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-white tabular-nums leading-none tracking-tight whitespace-nowrap">
               {phoneDisplay}
             </span>
           </a>
