@@ -65,8 +65,22 @@ export function BlogPage({ phoneDisplay, phoneLink }: BlogPageProps) {
       />
 
       {/* Hero blog */}
-      <section className="py-16 sm:py-20 bg-[var(--bg-dark)]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="relative py-20 sm:py-28 bg-[var(--bg-dark)] overflow-hidden">
+        <picture>
+          <source srcSet="/atelier/blog-hero-editorial.avif" type="image/avif" />
+          <source srcSet="/atelier/blog-hero-editorial.webp" type="image/webp" />
+          <img
+            src="/atelier/blog-hero-editorial.webp"
+            alt=""
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover opacity-45 pointer-events-none"
+            aria-hidden="true"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-dark)]/50 via-[var(--bg-dark)]/65 to-[var(--bg-dark)]/90 pointer-events-none" aria-hidden="true" />
+        <div className="absolute inset-0 pattern-dots-orange pointer-events-none" aria-hidden="true" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-[var(--accent)]/10 border border-[var(--accent)]/30 rounded-full px-4 py-2 mb-6">
             <BookOpen size={16} className="text-[var(--accent-bright)]" />
             <span className="text-[var(--accent-bright)] font-medium text-sm">{t('blog.badge')}</span>
@@ -74,7 +88,7 @@ export function BlogPage({ phoneDisplay, phoneLink }: BlogPageProps) {
           <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-white mb-4">
             {t('blog.title')}
           </h1>
-          <p className="text-lg text-white/60 max-w-xl mx-auto">
+          <p className="text-lg text-white/70 max-w-xl mx-auto">
             {t('blog.subtitle')}
           </p>
         </div>
