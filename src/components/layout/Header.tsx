@@ -256,7 +256,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
       <div
         ref={drawerRef}
         onKeyDown={handleTabTrap}
-        className={`fixed top-0 right-0 h-full w-[85%] max-w-sm z-[70] lg:hidden transition-transform duration-300 ease-out bg-[var(--bg-dark)] ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 right-0 h-full w-[85%] max-w-sm z-[70] lg:hidden transition-transform duration-300 ease-out bg-[var(--bg-dark)] overflow-y-auto overscroll-contain ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
         role="dialog"
         aria-modal="true"
         aria-label={t('aria.nav')}
@@ -279,7 +279,7 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
         </div>
 
         {isOpen && (
-          <div className="drawer-stagger">
+          <div className="drawer-stagger pb-8">
             {/* CTA appel géant en haut */}
             <div className="px-5 mt-2 mb-4">
               <a
