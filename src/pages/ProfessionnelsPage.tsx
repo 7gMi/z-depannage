@@ -12,6 +12,7 @@ import {
 import { useT } from '../i18n/LanguageContext';
 import { PageMeta } from '../components/PageMeta';
 import { JsonLd } from '../components/JsonLd';
+import { supabase } from '../lib/supabase';
 
 interface ProfessionnelsPageProps {
   phoneDisplay: string;
@@ -25,8 +26,12 @@ const B2B_SERVICE_JSONLD = {
   provider: {
     '@type': 'AutoRepair',
     name: 'ZDEPANNAGE',
+    legalName: 'ZDEPANNAGE SAS',
     url: 'https://z-depannage.fr',
     telephone: '+33756973686',
+    foundingDate: '2023-10-28',
+    vatID: 'FR84981024268',
+    taxID: '98102426800014',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '7 BIS Route de Corbeil',
@@ -107,10 +112,10 @@ const SLA_ROWS = [
 ] as const;
 
 const PROCESS_STEPS = [
-  { titleKey: 'b2b.process.step1' },
-  { titleKey: 'b2b.process.step2' },
-  { titleKey: 'b2b.process.step3' },
-  { titleKey: 'b2b.process.step4' },
+  { titleKey: 'b2b.process.step1', descKey: 'b2b.process.step1.desc', kpiKey: 'b2b.process.step1.kpi' },
+  { titleKey: 'b2b.process.step2', descKey: 'b2b.process.step2.desc', kpiKey: 'b2b.process.step2.kpi' },
+  { titleKey: 'b2b.process.step3', descKey: 'b2b.process.step3.desc', kpiKey: 'b2b.process.step3.kpi' },
+  { titleKey: 'b2b.process.step4', descKey: 'b2b.process.step4.desc', kpiKey: 'b2b.process.step4.kpi' },
 ] as const;
 
 const TRUST2_ITEMS = [
@@ -140,10 +145,12 @@ const INITIAL_FORM: FormState = {
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function ProfessionnelsPage({ phoneDisplay, phoneLink }: ProfessionnelsPageProps) {
-  const { t } = useT();
+  const { t, lang } = useT();
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const formId = useId();
   const fieldId = (k: string) => `${formId}-${k}`;
@@ -159,20 +166,33 @@ export function ProfessionnelsPage({ phoneDisplay, phoneLink }: ProfessionnelsPa
     return next;
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const v = validate(form);
     setErrors(v);
     if (Object.keys(v).length > 0) return;
 
-    // TODO: brancher endpoint /api/b2b-contact côté Dragoș
-    // Pour l'instant : log + état de succès, sans backend.
-    // Option alternative envisagée : mailto: préremplissage, désactivé pour ne pas
-    // ouvrir le client mail de l'utilisateur à son insu.
-    if (typeof window !== 'undefined' && window.console) {
-      window.console.log('[B2B contact form]', form);
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const { error } = await supabase.from('b2b_leads').insert({
+      name: form.name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+      sector: form.sector,
+      volume: form.volume,
+      locale: lang,
+      user_agent: navigator.userAgent.slice(0, 500),
+    });
+
+    if (error) {
+      setSubmitError(t('b2b.form.error.generic'));
+      setSubmitting(false);
+      return;
     }
+
     setSubmitted(true);
+    setSubmitting(false);
   }
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
@@ -424,11 +444,11 @@ export function ProfessionnelsPage({ phoneDisplay, phoneLink }: ProfessionnelsPa
       </section>
 
       {/* ============ PROCESS ============ */}
-      <section className="relative py-16 sm:py-24 bg-[var(--bg-dark)] text-white overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-[var(--bg-dark)] text-white overflow-hidden">
         <div className={`absolute inset-0 ${GRID_BG}`} aria-hidden="true" />
         <div className="relative max-w-6xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-300 mb-3">
+          <div className="text-center mb-16">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent-bright)] mb-3">
               {t('b2b.process.kicker')}
             </p>
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-white">
@@ -436,23 +456,89 @@ export function ProfessionnelsPage({ phoneDisplay, phoneLink }: ProfessionnelsPa
             </h2>
           </div>
 
-          <ol className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4 relative">
-            {PROCESS_STEPS.map((step, i) => (
-              <li
-                key={step.titleKey}
-                className="relative rounded-2xl p-6 bg-white/5 border border-white/10"
-              >
-                <div
-                  className="absolute -top-4 left-6 inline-flex items-center justify-center w-9 h-9 rounded-full font-heading font-extrabold text-white text-sm"
-                  style={{ background: 'var(--gradient-cta)', boxShadow: 'var(--shadow-orange)' }}
-                  aria-hidden="true"
+          {/* Desktop — timeline horizontale avec ligne SVG animée */}
+          <div className="relative hidden md:block">
+            <svg
+              className="steps-line reveal absolute left-0 right-0 top-[76px] w-full h-3 pointer-events-none"
+              viewBox="0 0 1200 10"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="stepGradient" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0%" stopColor="#FF6B2B" stopOpacity="0.15" />
+                  <stop offset="50%" stopColor="#FF6B2B" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#FF6B2B" stopOpacity="0.15" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M 40 5 L 1160 5"
+                fill="none"
+                stroke="url(#stepGradient)"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+
+            <ol className="grid grid-cols-4 gap-5 relative reveal-stagger">
+              {PROCESS_STEPS.map((step, i) => (
+                <li
+                  key={step.titleKey}
+                  className="step-card reveal group relative pt-24"
                 >
-                  {i + 1}
+                  <span className="step-ghost absolute -top-6 -left-1" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span
+                    className="step-dot absolute top-[70px] left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[var(--accent)] ring-4 ring-[var(--bg-dark)] z-10"
+                    aria-hidden="true"
+                  />
+                  <div className="relative rounded-2xl p-5 bg-white/[0.04] border border-white/10 hover:bg-white/[0.07] hover:border-[var(--accent)]/40 transition-all duration-300 hover:-translate-y-1">
+                    <p className="font-heading font-extrabold text-base text-white mb-2 leading-snug">
+                      <span className="sr-only">{t('b2b.process.stepLabel')} {i + 1} — </span>
+                      {t(step.titleKey)}
+                    </p>
+                    <p className="text-xs text-white/60 leading-relaxed mb-4 min-h-[48px]">
+                      {t(step.descKey)}
+                    </p>
+                    <p className="step-kpi font-heading font-extrabold text-lg text-[var(--accent-bright)] tabular-nums">
+                      {t(step.kpiKey)}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {/* Mobile — timeline verticale */}
+          <ol className="md:hidden relative space-y-5 pl-10 reveal-stagger">
+            <span
+              className="absolute left-3 top-2 bottom-2 w-px bg-gradient-to-b from-[var(--accent)]/10 via-[var(--accent)]/60 to-[var(--accent)]/10"
+              aria-hidden="true"
+            />
+            {PROCESS_STEPS.map((step, i) => (
+              <li key={step.titleKey} className="step-card reveal relative">
+                <span
+                  className="step-dot absolute -left-[30px] top-5 w-3 h-3 rounded-full bg-[var(--accent)] ring-4 ring-[var(--bg-dark)]"
+                  aria-hidden="true"
+                />
+                <div className="relative rounded-2xl p-5 bg-white/[0.04] border border-white/10">
+                  <div className="flex items-start justify-between mb-2">
+                    <p className="font-heading font-extrabold text-base text-white leading-snug">
+                      <span className="sr-only">{t('b2b.process.stepLabel')} {i + 1} — </span>
+                      {t(step.titleKey)}
+                    </p>
+                    <span className="font-heading text-xs font-bold text-white/25 tracking-widest ml-3 flex-shrink-0">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <p className="text-xs text-white/60 leading-relaxed mb-3">
+                    {t(step.descKey)}
+                  </p>
+                  <p className="step-kpi font-heading font-extrabold text-base text-[var(--accent-bright)] tabular-nums">
+                    {t(step.kpiKey)}
+                  </p>
                 </div>
-                <p className="mt-3 font-heading font-bold text-base text-white">
-                  <span className="sr-only">{t('b2b.process.stepLabel')} {i + 1} — </span>
-                  {t(step.titleKey)}
-                </p>
               </li>
             ))}
           </ol>
@@ -729,12 +815,19 @@ export function ProfessionnelsPage({ phoneDisplay, phoneLink }: ProfessionnelsPa
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 text-white font-heading font-extrabold text-base px-6 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 min-h-[48px]"
+                    disabled={submitting}
+                    className="w-full inline-flex items-center justify-center gap-2 text-white font-heading font-extrabold text-base px-6 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 min-h-[48px] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                     style={{ background: 'var(--gradient-cta)', boxShadow: 'var(--shadow-orange)' }}
                   >
-                    <Send size={18} />
-                    {t('b2b.form.submit')}
+                    <Send size={18} className={submitting ? 'motion-safe:animate-pulse' : ''} />
+                    {submitting ? t('b2b.form.submitting') : t('b2b.form.submit')}
                   </button>
+
+                  {submitError && (
+                    <p role="alert" className="text-sm text-red-300 text-center" aria-live="polite">
+                      {submitError}
+                    </p>
+                  )}
 
                   <p className="text-xs text-white/50 text-center">
                     {t('b2b.form.privacy')}
