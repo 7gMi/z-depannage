@@ -1,5 +1,8 @@
+import { lazy, Suspense } from 'react';
 import { MapPin, Truck, Clock } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
+
+const NationalCoverageMap = lazy(() => import('./NationalCoverageMap'));
 
 /**
  * Band "Couverture France entière sur demande" — placé sur page Professionnels
@@ -17,66 +20,15 @@ export function NationalCoverageBand() {
 
       <div className="relative max-w-6xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Visuel : carte France stylisée */}
-          <div className="relative order-2 lg:order-1">
-            <svg
-              viewBox="0 0 400 400"
-              className="w-full h-auto max-w-md mx-auto"
-              role="img"
-              aria-label={t('b2b.coverage.map.alt')}
+          {/* Visuel : carte Leaflet France avec base Grigny + trajets vers grandes villes */}
+          <div className="relative order-2 lg:order-1" aria-label={t('b2b.coverage.map.alt')}>
+            <Suspense
+              fallback={
+                <div className="w-full h-[420px] sm:h-[480px] rounded-2xl bg-white/5 border border-white/10 animate-pulse" />
+              }
             >
-              {/* Contour France (hexagone stylisé) */}
-              <path
-                d="M200 40 L330 110 L330 260 L260 340 L140 340 L70 260 L70 110 Z"
-                fill="rgba(255,255,255,0.04)"
-                stroke="rgba(255,255,255,0.15)"
-                strokeWidth="2"
-              />
-
-              {/* Trajets animés depuis IDF */}
-              <g fill="none" stroke="#EA580C" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.6">
-                <line x1="210" y1="135" x2="110" y2="300" className="motion-safe:animate-[dashFlow_4s_linear_infinite]" />
-                <line x1="210" y1="135" x2="290" y2="300" className="motion-safe:animate-[dashFlow_4s_linear_infinite]" />
-                <line x1="210" y1="135" x2="310" y2="180" className="motion-safe:animate-[dashFlow_4s_linear_infinite]" />
-                <line x1="210" y1="135" x2="100" y2="200" className="motion-safe:animate-[dashFlow_4s_linear_infinite]" />
-                <line x1="210" y1="135" x2="160" y2="330" className="motion-safe:animate-[dashFlow_4s_linear_infinite]" />
-              </g>
-
-              {/* Destinations (points) */}
-              <g fill="rgba(255,255,255,0.7)">
-                <circle cx="110" cy="300" r="4" />
-                <circle cx="290" cy="300" r="4" />
-                <circle cx="310" cy="180" r="4" />
-                <circle cx="100" cy="200" r="4" />
-                <circle cx="160" cy="330" r="4" />
-              </g>
-
-              {/* Labels villes */}
-              <g fill="rgba(255,255,255,0.55)" fontSize="11" fontFamily="system-ui, sans-serif" fontWeight="600">
-                <text x="105" y="320" textAnchor="middle">Bordeaux</text>
-                <text x="295" y="320" textAnchor="middle">Marseille</text>
-                <text x="320" y="185" textAnchor="start">Strasbourg</text>
-                <text x="95" y="195" textAnchor="end">Nantes</text>
-                <text x="160" y="350" textAnchor="middle">Toulouse</text>
-              </g>
-
-              {/* IDF surlignée */}
-              <circle cx="210" cy="135" r="14" fill="#EA580C" opacity="0.25">
-                <animate attributeName="r" values="14;20;14" dur="2.5s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="210" cy="135" r="7" fill="#F97316" />
-              <text
-                x="210"
-                y="112"
-                textAnchor="middle"
-                fill="#F97316"
-                fontSize="12"
-                fontFamily="system-ui, sans-serif"
-                fontWeight="800"
-              >
-                Île-de-France
-              </text>
-            </svg>
+              <NationalCoverageMap />
+            </Suspense>
           </div>
 
           {/* Copy */}

@@ -1,15 +1,15 @@
 import { useT } from '../../i18n/LanguageContext';
 
-const LOGOS = [
-  'europ-assistance', 'mutuelle-assurance', 'amf', 'mapa',
-  'bpce', 'credit-agricole', 'generali', 'gmf', 'allianz',
-  'maif', 'macif', 'matmut', 'agpm', 'pacifica',
-  'mae', 'smacl', 'maaf', 'la-poste',
+const NAMES = [
+  'AXA', 'MAIF', 'MACIF', 'Matmut', 'Allianz', 'Generali',
+  'GMF', 'MMA', 'MAAF', 'Groupama', 'Pacifica', 'Direct Assurance',
+  'Gan', 'Swiss Life', 'Crédit Agricole', 'BPCE',
+  'Europ Assistance', 'Mondial Assistance',
 ];
 
 export function InsuranceMarquee() {
   const { t } = useT();
-  const repeated = [...LOGOS, ...LOGOS, ...LOGOS];
+  const repeated = [...NAMES, ...NAMES, ...NAMES];
 
   return (
     <section className="py-12 sm:py-16 bg-[var(--bg-primary)] border-y border-[var(--border-default)]">
@@ -25,15 +25,12 @@ export function InsuranceMarquee() {
       <div className="overflow-hidden">
         <div className="marquee-focus-group animate-marquee flex items-center whitespace-nowrap">
           {repeated.map((name, i) => (
-            <img
+            <span
               key={`${name}-${i}`}
-              src={`/logos/${name}.png`}
-              alt={name.replace(/-/g, ' ')}
-              width={120}
-              height={56}
-              className="marquee-focus-item h-14 w-auto mx-6 rounded-lg flex-shrink-0"
-              loading="lazy"
-            />
+              className="marquee-focus-item mx-5 px-5 py-2.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-default)] text-[var(--text-primary)] font-heading font-bold text-base flex-shrink-0"
+            >
+              {name}
+            </span>
           ))}
         </div>
       </div>

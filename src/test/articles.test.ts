@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { ARTICLES } from '../data/articles';
 
 describe('Articles', () => {
-  it('should have 12 articles', () => {
-    expect(ARTICLES).toHaveLength(12);
+  it('should have 14 articles', () => {
+    expect(ARTICLES).toHaveLength(14);
   });
 
   it('should have unique slugs', () => {

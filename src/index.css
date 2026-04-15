@@ -426,6 +426,25 @@ html { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; f
   to { stroke-dashoffset: -16; }
 }
 
+/* Tooltips Leaflet pour la carte couverture nationale */
+.zdep-coverage-tooltip {
+  background: rgba(15, 27, 45, 0.92) !important;
+  border: 1px solid rgba(234, 88, 12, 0.5) !important;
+  color: #fff !important;
+  font-family: system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+.zdep-coverage-tooltip::before { display: none !important; }
+.zdep-coverage-tooltip-base {
+  background: rgba(220, 38, 38, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 12px !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-mesh-gradient { animation: none; }
   .timeline-item.reveal.visible .timeline-dot { animation: none; }

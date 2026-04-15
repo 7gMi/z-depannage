@@ -1,7 +1,7 @@
 import { Shield, Clock, MapPin, Truck, Users, Award, CheckCircle, Phone, Calendar, FileText, Building2, Briefcase, Hash, Scale, Landmark, ExternalLink } from 'lucide-react';
 import { Stats } from '../components/layout/Stats';
 import { Avis } from '../components/layout/Avis';
-// import { InsuranceMarquee } from '../components/layout/InsuranceMarquee'; // Réactiver après signature contrats assurance
+import { InsuranceMarquee } from '../components/layout/InsuranceMarquee';
 import { CTABanner } from '../components/layout/CTABanner';
 import { PageMeta } from '../components/PageMeta';
 import { useT } from '../i18n/LanguageContext';
@@ -530,8 +530,7 @@ export function AboutPage({ phoneDisplay, phoneLink }: AboutPageProps) {
         </div>
       </section>
 
-      {/* InsuranceMarquee masquée jusqu'à signature de vrais contrats assurance */}
-      {/* <InsuranceMarquee /> */}
+      <InsuranceMarquee />
       <Stats />
       <Avis />
       <CTABanner phoneDisplay={phoneDisplay} phoneLink={phoneLink} />
