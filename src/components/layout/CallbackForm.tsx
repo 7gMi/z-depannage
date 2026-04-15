@@ -54,7 +54,7 @@ export function CallbackForm() {
                   id="phone"
                   type="tel"
                   required
-                  pattern="^(?:(?:\+33|0033|0)\s*[1-9])(?:[\s.-]*\d{2}){4}$"
+                  pattern="^(?:(?:\+33|0033|0)\s*[1-9])(?:[\s.\-]*\d{2}){4}$"
                   minLength={10}
                   maxLength={20}
                   title="Numéro de téléphone français (ex: 06 12 34 56 78)"

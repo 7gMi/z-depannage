@@ -5,8 +5,8 @@ import { useT } from '../../i18n/LanguageContext';
 const STATS = [
   { icon: Calendar, value: 3, max: 5, suffix: '+', labelKey: 'stats.years' },
   { icon: MapPin, value: 8, max: 8, suffix: '', labelKey: 'stats.departments' },
-  { icon: Truck, value: 3, max: 5, suffix: '', labelKey: 'stats.vehicles' },
-  { icon: Users, value: 4, max: 8, suffix: '', labelKey: 'stats.team' },
+  { icon: Truck, value: 6, max: 8, suffix: '', labelKey: 'stats.vehicles' },
+  { icon: Users, value: 6, max: 8, suffix: '', labelKey: 'stats.team' },
 ];
 
 function StatItem({ icon: Icon, value, max, suffix, labelKey }: typeof STATS[number]) {
