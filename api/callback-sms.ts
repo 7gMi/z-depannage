@@ -10,7 +10,7 @@
 //
 // Env vars requises :
 //   OVH_APP_KEY, OVH_APP_SECRET, OVH_CONSUMER_KEY, OVH_SMS_SERVICE,
-//   DRAGOS_PHONE, VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY
+//   DRAGOS_PHONE, VITE_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
 
 import crypto from 'node:crypto';
 
@@ -93,10 +93,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     OVH_SMS_SERVICE,
     DRAGOS_PHONE,
     VITE_SUPABASE_URL,
-    VITE_SUPABASE_ANON_KEY,
+    SUPABASE_SERVICE_ROLE_KEY,
   } = process.env;
 
-  if (!OVH_SMS_SERVICE || !DRAGOS_PHONE || !VITE_SUPABASE_URL || !VITE_SUPABASE_ANON_KEY) {
+  if (!OVH_SMS_SERVICE || !DRAGOS_PHONE || !VITE_SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
     res.status(500).json({ error: 'Missing server env vars' });
     return;
   }
@@ -106,8 +106,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const insertRes = await fetch(`${VITE_SUPABASE_URL}/rest/v1/callback_requests`, {
     method: 'POST',
     headers: {
-      apikey: VITE_SUPABASE_ANON_KEY,
-      Authorization: `Bearer ${VITE_SUPABASE_ANON_KEY}`,
+      apikey: SUPABASE_SERVICE_ROLE_KEY,
+      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
       'Content-Type': 'application/json',
       Prefer: 'return=representation',
     },
@@ -156,8 +156,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       await fetch(`${VITE_SUPABASE_URL}/rest/v1/callback_requests?id=eq.${requestId}`, {
         method: 'PATCH',
         headers: {
-          apikey: VITE_SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${VITE_SUPABASE_ANON_KEY}`,
+          apikey: SUPABASE_SERVICE_ROLE_KEY,
+          Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -174,8 +174,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       await fetch(`${VITE_SUPABASE_URL}/rest/v1/callback_requests?id=eq.${requestId}`, {
         method: 'PATCH',
         headers: {
-          apikey: VITE_SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${VITE_SUPABASE_ANON_KEY}`,
+          apikey: SUPABASE_SERVICE_ROLE_KEY,
+          Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
