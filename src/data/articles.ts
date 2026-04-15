@@ -402,4 +402,70 @@ export const ARTICLES: Article[] = [
       "Pour un dépannage utilitaire ou poids lourd jusqu'à 3,5 tonnes : **07 56 97 36 86**, 24h/24, 7j/7. Devis transparent, prise en charge assurance, intervention rapide.",
     ],
   },
+  {
+    slug: 'depannage-grigny-91350',
+    title: 'Dépannage auto Grigny 91350 — Votre dépanneur local',
+    excerpt: "Basés à Grigny dans l'Essonne, nous intervenons en 30 minutes maximum sur toute la commune et les villes voisines (Viry-Châtillon, Ris-Orangis, Évry, Corbeil-Essonnes).",
+    category: 'Services',
+    date: '2026-04-15',
+    readTime: 4,
+    image: '/blog/depannage-grigny-91350.webp',
+    content: [
+      "Vous êtes en panne à Grigny (91350) ou dans les communes voisines de l'Essonne ? ZDEPANNAGE est votre dépanneur de proximité, basé directement à Grigny depuis 2023. Voici ce que vous devez savoir si vous avez besoin d'une intervention rapide.",
+
+      "## Pourquoi un dépanneur local change tout",
+      "Quand votre voiture tombe en panne, chaque minute compte. Un dépanneur basé à Paris ou en banlieue lointaine peut mettre 1h à 1h30 pour vous atteindre, surtout aux heures de pointe. À l'inverse, **ZDEPANNAGE étant basé à Grigny même**, nous intervenons généralement en moins de 30 minutes sur l'ensemble de la commune et les villes limitrophes. Notre dépôt est situé à proximité directe de la N7, ce qui nous permet de rejoindre rapidement n'importe quel point de l'agglomération.",
+
+      "## Notre zone d'intervention autour de Grigny",
+      "Notre flotte de 6 véhicules dépanneurs (2 Mercedes Sprinter, 2 Toyota Hilux, 2 Mercedes Atego) intervient en priorité sur :\n\n- **Grigny** (91350) — temps moyen : 15 minutes\n- **Viry-Châtillon** (91170) — 15 minutes\n- **Ris-Orangis** (91130) — 20 minutes\n- **Évry-Courcouronnes** (91000) — 20 minutes\n- **Corbeil-Essonnes** (91100) — 25 minutes\n- **Juvisy-sur-Orge** (91260) — 20 minutes\n- **Athis-Mons** (91200) — 20 minutes\n- **Savigny-sur-Orge** (91600) — 20 minutes\n\nNous couvrons aussi tout le sud de l'Île-de-France au-delà, avec des délais légèrement plus longs.",
+
+      "## Les pannes les plus fréquentes à Grigny",
+      "Notre expérience locale nous permet d'identifier les pannes récurrentes dans le secteur :\n\n- **Batterie déchargée** — particulièrement en hiver, sur les parkings résidentiels\n- **Crevaisons** sur la N7 et la D448 (chaussée parfois dégradée)\n- **Démarrage difficile** matinal après chute des températures\n- **Pannes de carburant** sur l'A6 entre Grigny et la sortie 7\n- **Accidents légers** au rond-point de la mairie et carrefour des Bordes\n\nNous arrivons toujours équipés du matériel adapté pour ces situations courantes : booster batterie, kit anti-crevaison, plateau pour remorquage.",
+
+      "## Tarifs réglementés et transparents",
+      "Nos prix sont les **tarifs réglementés par arrêté ministériel**. Pas de mauvaise surprise :\n\n- **Dépannage simple** (batterie, démarrage) : à partir de 70 € TTC\n- **Remorquage VL en ville** (jusqu'à 5 km) : à partir de 110 € TTC\n- **Remorquage en heures non ouvrables** : majoration nuit/dimanche/férié\n- **Tarif sur autoroute** (différent, fixé par arrêté) : à partir de 151 € TTC\n\nLe **prix exact** vous est communiqué au téléphone avant notre départ. **Si nous ne pouvons pas dépanner sur place, le déplacement reste facturé** (norme du secteur).",
+
+      "## Prise en charge assurance",
+      "Si votre assurance auto inclut une **assistance dépannage** (la plupart des contrats l'incluent), nous pouvons gérer la prise en charge directement avec votre compagnie. Vous n'avancez rien. Préparez :\n\n- Votre numéro de contrat assurance\n- Votre permis de conduire\n- Votre carte grise\n\nNous travaillons avec **toutes les compagnies françaises** (AXA, MAIF, MACIF, Groupama, Allianz, Matmut, GMF, MMA, etc.) et nous nous occupons de la facturation à votre assureur.",
+
+      "## Comment nous joindre depuis Grigny ?",
+      "Un seul numéro à enregistrer dans votre téléphone : **07 56 97 36 86**. Disponible **24h/24, 7j/7** — y compris la nuit, le dimanche et les jours fériés. Nous répondons en moins de 30 secondes.\n\nVous pouvez aussi nous joindre par **WhatsApp** au même numéro (pratique pour envoyer une photo de la panne et votre localisation GPS), ou via le formulaire de notre site.",
+
+      "## Pourquoi nous choisir à Grigny",
+      "- **Entreprise locale**, basée à Grigny depuis 2023\n- **Agréés** par les forces de l'ordre pour l'Île-de-France\n- **Équipe de 6 professionnels** disponibles 24/7\n- **Flotte récente de 6 véhicules** entretenus régulièrement\n- **Note Google ⭐⭐⭐⭐⭐** (avis vérifiés)\n- **Sans sous-traitance** : c'est nous qui répondons et c'est nous qui arrivons\n\nEnregistrez notre numéro maintenant — vous nous remercierez la prochaine fois que votre voiture vous lâchera.",
+    ],
+  },
+  {
+    slug: 'panne-batterie-autoroute-a6',
+    title: 'Panne de batterie sur l\'A6, A10 ou A86 : que faire ?',
+    excerpt: "Voiture en panne de batterie sur autoroute en Île-de-France ? Procédure à suivre, qui appeler, tarifs réglementés et délais d'intervention.",
+    category: 'Conseils',
+    date: '2026-04-15',
+    readTime: 5,
+    image: '/blog/panne-batterie-autoroute-a6.webp',
+    content: [
+      "Une panne de batterie au péage de Saint-Arnoult sur l'A10, dans un bouchon de l'A6 vers Paris ou en pleine voie sur l'A86 — la situation est plus stressante qu'en ville. Voici la procédure exacte à suivre, qui appeler, et combien ça coûte.",
+
+      "## Reconnaître une panne de batterie au volant",
+      "Plusieurs symptômes peuvent indiquer une batterie défaillante :\n\n- **Voyant batterie rouge** allumé au tableau de bord\n- **Phares qui faiblissent** progressivement\n- **Démarreur qui peine** au redémarrage après un arrêt\n- **Vitres électriques lentes**, autoradio qui se coupe\n- **Pertes de puissance** soudaines\n\nSur autoroute, ces signes peuvent évoluer vite : ne tentez pas de continuer en espérant atteindre la sortie. **Mieux vaut s'arrêter en sécurité immédiatement.**",
+
+      "## La procédure obligatoire en 6 étapes",
+      "**1. Allumez vos feux de détresse** dès que vous sentez le problème.\n\n**2. Rangez-vous sur la bande d'arrêt d'urgence (BAU)** le plus à droite possible, idéalement dans une zone refuge.\n\n**3. Sortez avec votre gilet jaune** déjà enfilé, du côté droit (côté glissière). Ne descendez JAMAIS côté circulation.\n\n**4. Posez le triangle 30 mètres derrière** le véhicule. Si la circulation est trop dense, **sautez cette étape** : votre vie passe avant.\n\n**5. Mettez-vous derrière la glissière** avec tous les passagers. Ne restez ni dans la voiture ni sur la chaussée.\n\n**6. Appelez les secours** depuis derrière la glissière.",
+
+      "## Qui appeler exactement ?",
+      "Sur autoroute, **vous ne pouvez PAS choisir n'importe quel dépanneur**. Seuls les dépanneurs agréés par la concession autoroutière peuvent intervenir.\n\nDeux options :\n\n- **Borne d'appel orange** (tous les 2 km) : appel gratuit qui prévient automatiquement la société autoroutière. Elle envoie le dépanneur agréé du secteur. **C'est la méthode obligatoire en théorie.**\n\n- **Téléphone portable** : appelez le **07 56 97 36 86** (ZDEPANNAGE). Si nous sommes le dépanneur agréé sur votre tronçon, nous intervenons. Sinon, nous vous orientons vers le bon prestataire.\n\n**Notre zone d'intervention autoroutière** :\n- A6 (entre porte d'Italie et sortie 8 Auxerre)\n- A10 (entre Wissous et Étampes)\n- A86 (boucle complète sud + ouest)\n- N7, N20, N104 (Francilienne)",
+
+      "## Tarifs réglementés sur autoroute (2026)",
+      "Les tarifs sur autoroute sont **fixés par arrêté ministériel** (décret du 1er janvier 2026) :\n\n- **Dépannage simple sur place** (batterie, crevaison, carburant) : **151,55 € TTC**\n- **Remorquage jusqu'à 5 km** : **151,55 € TTC** (inclus dans le forfait)\n- **Au-delà de 5 km** : **2,29 € TTC / km supplémentaire**\n- **Majoration nuit (18h-8h)** : **+50 %**\n- **Majoration dimanche/jour férié** : **+50 %**\n- **Cumul nuit + dimanche/férié** : **+100 %**\n\nUn dépannage de batterie en pleine nuit un dimanche revient donc à environ **303 € TTC**. C'est le **tarif maximum légal** — aucun dépanneur ne peut facturer plus.",
+
+      "## Prise en charge par votre assurance",
+      "La quasi-totalité des contrats d'assurance auto en France incluent une **garantie assistance**. Selon votre formule :\n\n- **Assistance 0 km** (formule tous risques) : prise en charge totale, vous n'avancez rien\n- **Assistance avec franchise kilométrique** (souvent 25 ou 50 km) : si vous êtes au-delà du domicile, c'est pris en charge\n- **Aucune assistance** : vous payez, vous conservez la facture, vous demandez le remboursement à votre mutuelle si elle couvre\n\n**Avant que le dépanneur arrive**, appelez votre assistance (numéro au dos de la carte verte) pour ouvrir un dossier. Communiquez le numéro de dossier au dépanneur à son arrivée.",
+
+      "## Que faire après le dépannage ?",
+      "Une fois en sécurité au prochain garage ou à votre domicile, **changez votre batterie au plus vite**. Une batterie qui a lâché ne se \"recharge\" pas durablement — elle peut tenir quelques jours au mieux. Comptez 80 à 200 € pour une batterie neuve selon votre véhicule.\n\nProfitez-en aussi pour faire vérifier :\n- L'**alternateur** (responsable de la recharge en roulant)\n- Les **cosses** (oxydation)\n- Les **fusibles** liés au démarrage",
+
+      "## En cas d'urgence sur l'A6, A10, A86 ou A104",
+      "Ayez toujours en tête : **07 56 97 36 86** (ZDEPANNAGE — agréé Île-de-France).\n\nEn pleine panne sur autoroute, la priorité est votre **sécurité**, pas la rapidité. Mettez-vous à l'abri, puis appelez. Nous arrivons en 30 minutes en moyenne sur les autoroutes franciliennes.",
+    ],
+  },
 ];

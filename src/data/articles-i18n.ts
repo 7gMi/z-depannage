@@ -207,6 +207,40 @@ export const ARTICLES_I18N: Record<string, Record<Lang, ArticleI18n>> = {
       category: 'Услуги',
     },
   },
+  'depannage-grigny-91350': {
+    ar: {
+      title: 'إعطال السيارات في غريني 91350 — ميكانيكي محلي',
+      excerpt: 'مقرنا في غريني (إيسون)، نتدخل في 30 دقيقة كحد أقصى في جميع أنحاء البلدة والمدن المجاورة (Viry-Châtillon، Ris-Orangis، Évry).',
+      category: 'الخدمات',
+    },
+    en: {
+      title: 'Breakdown service Grigny 91350 — Your local tow truck',
+      excerpt: 'Based in Grigny (Essonne), we intervene within 30 minutes across the entire town and neighboring cities (Viry-Châtillon, Ris-Orangis, Évry).',
+      category: 'Services',
+    },
+    ru: {
+      title: 'Эвакуация автомобилей Гриньи 91350 — Местный эвакуатор',
+      excerpt: 'Базируемся в Гриньи (Эссон), приезжаем максимум за 30 минут по всему городу и соседним коммунам (Viry-Châtillon, Ris-Orangis, Évry).',
+      category: 'Услуги',
+    },
+  },
+  'panne-batterie-autoroute-a6': {
+    ar: {
+      title: 'عطل بطارية على الطريق السريع A6، A10 أو A86: ماذا تفعل؟',
+      excerpt: 'سيارتك معطلة بسبب البطارية على الطريق السريع في إيل دو فرانس؟ الإجراء الواجب اتباعه، من تتصل، الأسعار المنظمة وأوقات التدخل.',
+      category: 'نصائح',
+    },
+    en: {
+      title: 'Battery failure on A6, A10 or A86 highway: what to do?',
+      excerpt: 'Battery breakdown on a French highway in Île-de-France? Procedure to follow, who to call, regulated rates and intervention times.',
+      category: 'Tips',
+    },
+    ru: {
+      title: 'Поломка аккумулятора на A6, A10 или A86: что делать?',
+      excerpt: 'Поломка аккумулятора на автостраде в Иль-де-Франс? Процедура, кому звонить, регулируемые тарифы и время прибытия.',
+      category: 'Советы',
+    },
+  },
 };
 
 export function getArticleI18n(slug: string, lang: string): ArticleI18n | null {
