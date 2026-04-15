@@ -135,7 +135,7 @@ export const ARTICLES: Article[] = [
       "Demandez simplement au dépanneur son numéro d'agrément préfectoral. Vous pouvez aussi vérifier auprès de votre préfecture ou demander à voir l'agrément affiché dans le véhicule de dépannage.",
 
       "## ZDEPANNAGE : agréé et transparent",
-      "Chez ZDEPANNAGE, nous sommes agréés par les forces de l'ordre pour l'Île-de-France. Notre équipe de 6 professionnels intervient 24h/24 avec 6 plateaux dernière génération (2 Mercedes Sprinter + 2 Toyota Hilux + 2 Mercedes Atego). Nous appliquons les tarifs réglementés et communiquons toujours le prix exact avant de partir. Appelez-nous au 07 56 97 36 86.",
+      "Chez ZDEPANNAGE, nous sommes agréés par les forces de l'ordre pour l'Île-de-France. Notre équipe de 6 professionnels intervient 24h/24 avec 6 plateaux dernière génération (2 Mercedes Sprinter + 2 Toyota Light City Hilux + 2 Mercedes Atego). Nous appliquons les tarifs réglementés et communiquons toujours le prix exact avant de partir. Appelez-nous au 07 56 97 36 86.",
     ],
   },
   {
@@ -366,7 +366,7 @@ export const ARTICLES: Article[] = [
       "Si vous pensez avoir été victime d'une arnaque :\n\n1. **Conservez tous les documents** (devis, facture, échanges)\n2. **Contactez la DGCCRF** via signal.conso.gouv.fr\n3. **Saisissez votre assureur** s'il a payé la facture\n4. **Déposez plainte** auprès de la police pour escroquerie",
 
       "## ZDEPANNAGE : la transparence avant tout",
-      "Chez ZDEPANNAGE, nous appliquons les tarifs réglementés, fournissons systématiquement un devis écrit et acceptons tous les moyens de paiement. Notre numéro SIRET et notre agrément Police sont affichés sur tous nos véhicules. Plus de 22 avis Google 5 étoiles attestent de notre sérieux. Appelez le **07 56 97 36 86** en toute confiance.",
+      "Chez ZDEPANNAGE, nous appliquons les tarifs réglementés, fournissons systématiquement un devis écrit et acceptons tous les moyens de paiement. Notre numéro SIRET et notre agrément Police sont affichés sur tous nos véhicules. Plus de 24 avis Google 5 étoiles attestent de notre sérieux. Appelez le **07 56 97 36 86** en toute confiance.",
     ],
   },
   {
@@ -417,7 +417,7 @@ export const ARTICLES: Article[] = [
       "Quand votre voiture tombe en panne, chaque minute compte. Un dépanneur basé à Paris ou en banlieue lointaine peut mettre 1h à 1h30 pour vous atteindre, surtout aux heures de pointe. À l'inverse, **ZDEPANNAGE étant basé à Grigny même**, nous intervenons généralement en moins de 30 minutes sur l'ensemble de la commune et les villes limitrophes. Notre dépôt est situé à proximité directe de la N7, ce qui nous permet de rejoindre rapidement n'importe quel point de l'agglomération.",
 
       "## Notre zone d'intervention autour de Grigny",
-      "Notre flotte de 6 véhicules dépanneurs (2 Mercedes Sprinter, 2 Toyota Hilux, 2 Mercedes Atego) intervient en priorité sur :\n\n- **Grigny** (91350) — temps moyen : 15 minutes\n- **Viry-Châtillon** (91170) — 15 minutes\n- **Ris-Orangis** (91130) — 20 minutes\n- **Évry-Courcouronnes** (91000) — 20 minutes\n- **Corbeil-Essonnes** (91100) — 25 minutes\n- **Juvisy-sur-Orge** (91260) — 20 minutes\n- **Athis-Mons** (91200) — 20 minutes\n- **Savigny-sur-Orge** (91600) — 20 minutes\n\nNous couvrons aussi tout le sud de l'Île-de-France au-delà, avec des délais légèrement plus longs.",
+      "Notre flotte de 6 véhicules dépanneurs (2 Mercedes Sprinter, 2 Toyota Light City Hilux, 2 Mercedes Atego) intervient en priorité sur :\n\n- **Grigny** (91350) — temps moyen : 15 minutes\n- **Viry-Châtillon** (91170) — 15 minutes\n- **Ris-Orangis** (91130) — 20 minutes\n- **Évry-Courcouronnes** (91000) — 20 minutes\n- **Corbeil-Essonnes** (91100) — 25 minutes\n- **Juvisy-sur-Orge** (91260) — 20 minutes\n- **Athis-Mons** (91200) — 20 minutes\n- **Savigny-sur-Orge** (91600) — 20 minutes\n\nNous couvrons aussi tout le sud de l'Île-de-France au-delà, avec des délais légèrement plus longs.",
 
       "## Les pannes les plus fréquentes à Grigny",
       "Notre expérience locale nous permet d'identifier les pannes récurrentes dans le secteur :\n\n- **Batterie déchargée** — particulièrement en hiver, sur les parkings résidentiels\n- **Crevaisons** sur la N7 et la D448 (chaussée parfois dégradée)\n- **Démarrage difficile** matinal après chute des températures\n- **Pannes de carburant** sur l'A6 entre Grigny et la sortie 7\n- **Accidents légers** au rond-point de la mairie et carrefour des Bordes\n\nNous arrivons toujours équipés du matériel adapté pour ces situations courantes : booster batterie, kit anti-crevaison, plateau pour remorquage.",
