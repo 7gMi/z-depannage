@@ -68,10 +68,10 @@ export function Footer({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
             href="https://mihaigaina.dev/#contact"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1.5 text-[11px] text-white/40 hover:text-[var(--accent-bright)] transition-colors"
+            className="group inline-flex items-center gap-1.5 text-[11px] text-white/65 hover:text-[var(--accent-bright)] transition-colors"
           >
             <span>{t('footer.freelance.question')}</span>
-            <span className="font-semibold underline underline-offset-4 decoration-white/50 group-hover:decoration-[var(--accent-bright)] transition-colors">
+            <span className="font-semibold underline underline-offset-4 decoration-white/70 group-hover:decoration-[var(--accent-bright)] transition-colors">
               {t('footer.freelance.cta')}
             </span>
             <span className="group-hover:translate-x-0.5 transition-transform">&rarr;</span>

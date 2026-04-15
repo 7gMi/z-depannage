@@ -88,7 +88,7 @@ export function Zone({ compact }: { compact?: boolean } = {}) {
               }`}
             >
               <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-heading font-extrabold text-sm ${
-                highlight ? 'bg-[var(--accent)] text-white' : 'bg-[var(--primary)] text-white'
+                highlight ? 'bg-[var(--accent-hover)] text-white' : 'bg-[var(--primary)] text-white'
               }`}>
                 {code}
               </div>
