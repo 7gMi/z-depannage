@@ -13,6 +13,7 @@ import { useT } from '../i18n/LanguageContext';
 import { PageMeta } from '../components/PageMeta';
 import { JsonLd } from '../components/JsonLd';
 import { supabase } from '../lib/supabase';
+import { NationalCoverageBand } from '../components/layout/NationalCoverageBand';
 
 interface ProfessionnelsPageProps {
   phoneDisplay: string;
@@ -293,6 +294,9 @@ export function ProfessionnelsPage({ phoneDisplay, phoneLink }: ProfessionnelsPa
           </div>
         </div>
       </section>
+
+      {/* ============ COUVERTURE NATIONALE (sur demande) ============ */}
+      <NationalCoverageBand />
 
       {/* ============ TRUST BANNER (social proof AVANT pitch) ============ */}
       <section className="py-16 sm:py-20 bg-[var(--bg-secondary)]">

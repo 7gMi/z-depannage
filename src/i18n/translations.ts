@@ -282,6 +282,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     'nav.pro.badge': 'B2B',
 
     'b2b.hero.kicker': 'Espace Professionnels',
+    // National coverage band (placé juste après le Hero B2B)
+    'b2b.coverage.kicker': 'Rayonnement national',
+    'b2b.coverage.title': 'Basés en Île-de-France. Déplacement France entière sur demande.',
+    'b2b.coverage.desc': "Pour les contrats B2B — flottes, assureurs, concessionnaires — nous étudions chaque demande de remorquage longue distance au-delà de l'IDF, selon disponibilité de notre flotte et planning d'intervention.",
+    'b2b.coverage.point1': '6 véhicules équipés : Sprinter × 2, Toyota Hilux × 2, Mercedes Atego × 2',
+    'b2b.coverage.point2': 'Grandes villes atteignables : Lyon, Marseille, Bordeaux, Lille, Strasbourg, Nantes, Toulouse',
+    'b2b.coverage.point3': 'Devis personnalisé sous 24h — facturation au km + heures + forfait contrat',
+    'b2b.coverage.disclaimer': 'Service longue distance sur devis préalable. Pas toujours disponible — contactez-nous pour vérifier la disponibilité.',
+    'b2b.coverage.map.alt': 'Carte France stylisée : ZDEPANNAGE basé en Île-de-France, interventions possibles vers Bordeaux, Marseille, Strasbourg, Nantes, Toulouse sur demande.',
     'b2b.hero.title': 'Contrats de dépannage 24/7 pour professionnels IDF',
     'b2b.hero.subtitle': "Assureurs, concessionnaires, flottes, hôpitaux. Un interlocuteur unique, une facturation centralisée, des délais garantis.",
     'b2b.hero.cta.primary': 'Demander un devis contrat',
@@ -754,6 +763,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     'nav.pro.badge': 'B2B',
 
     'b2b.hero.kicker': 'فضاء المحترفين',
+    // National coverage band
+    'b2b.coverage.kicker': 'تغطية وطنية',
+    'b2b.coverage.title': 'مقرنا في إيل دو فرانس. تدخل في جميع أنحاء فرنسا عند الطلب.',
+    'b2b.coverage.desc': 'بالنسبة للعقود التجارية — الأساطيل، شركات التأمين، وكلاء السيارات — ندرس كل طلب قطر لمسافات طويلة خارج إيل دو فرانس، حسب توفر أسطولنا وجدول التدخل.',
+    'b2b.coverage.point1': '6 مركبات مجهزة : Sprinter × 2، Toyota Hilux × 2، Mercedes Atego × 2',
+    'b2b.coverage.point2': 'المدن الكبرى القابلة للوصول : ليون، مرسيليا، بوردو، ليل، ستراسبورغ، نانت، تولوز',
+    'b2b.coverage.point3': 'عرض سعر مخصص خلال 24 ساعة — فوترة بالكيلومتر + الساعات + عقد شامل',
+    'b2b.coverage.disclaimer': 'خدمة المسافات الطويلة بناءً على عرض سعر مسبق. ليست متاحة دائماً — اتصل بنا للتحقق من التوفر.',
+    'b2b.coverage.map.alt': 'خريطة فرنسا : ZDEPANNAGE مقرها إيل دو فرانس، التدخلات ممكنة نحو بوردو، مرسيليا، ستراسبورغ، نانت، تولوز عند الطلب.',
     'b2b.hero.title': 'عقود إصلاح الأعطال 24/7 للمحترفين في إيل دو فرانس',
     'b2b.hero.subtitle': 'شركات التأمين، وكلاء السيارات، الأساطيل، المستشفيات. محاور واحد، فوترة مركزية، آجال مضمونة.',
     'b2b.hero.cta.primary': 'طلب عرض أسعار للعقد',
@@ -1224,6 +1242,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     'nav.pro.badge': 'B2B',
 
     'b2b.hero.kicker': 'Business Area',
+    // National coverage band
+    'b2b.coverage.kicker': 'Nationwide reach',
+    'b2b.coverage.title': 'Based in Île-de-France. Nationwide coverage on request.',
+    'b2b.coverage.desc': 'For B2B contracts — fleets, insurers, dealers — we review each long-distance towing request beyond IDF, based on our fleet availability and scheduling.',
+    'b2b.coverage.point1': '6 equipped vehicles: Sprinter × 2, Toyota Hilux × 2, Mercedes Atego × 2',
+    'b2b.coverage.point2': 'Major cities reachable: Lyon, Marseille, Bordeaux, Lille, Strasbourg, Nantes, Toulouse',
+    'b2b.coverage.point3': 'Custom quote within 24h — billing per km + hours + contract package',
+    'b2b.coverage.disclaimer': 'Long-distance service on prior quote. Not always available — contact us to check availability.',
+    'b2b.coverage.map.alt': 'Stylized map of France: ZDEPANNAGE based in Île-de-France, interventions possible to Bordeaux, Marseille, Strasbourg, Nantes, Toulouse on request.',
     'b2b.hero.title': '24/7 breakdown & towing contracts for professionals in Île-de-France',
     'b2b.hero.subtitle': 'Insurers, dealerships, fleets, hospitals. A single point of contact, centralized invoicing, guaranteed response times.',
     'b2b.hero.cta.primary': 'Request a contract quote',
@@ -1694,6 +1721,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     'nav.pro.badge': 'B2B',
 
     'b2b.hero.kicker': 'Зона для бизнеса',
+    // National coverage band
+    'b2b.coverage.kicker': 'Национальный охват',
+    'b2b.coverage.title': 'Мы базируемся в Иль-де-Франс. Выезды по всей Франции — по запросу.',
+    'b2b.coverage.desc': 'Для B2B-контрактов — автопарки, страховые, автосалоны — мы рассматриваем каждый запрос на эвакуацию на дальние расстояния за пределы IDF, в зависимости от наличия техники и графика.',
+    'b2b.coverage.point1': '6 оборудованных автомобилей: Sprinter × 2, Toyota Hilux × 2, Mercedes Atego × 2',
+    'b2b.coverage.point2': 'Доступные крупные города: Лион, Марсель, Бордо, Лилль, Страсбург, Нант, Тулуза',
+    'b2b.coverage.point3': 'Индивидуальное предложение в течение 24 ч — оплата за км + часы + контрактный пакет',
+    'b2b.coverage.disclaimer': 'Услуга дальних выездов по предварительному расчёту. Не всегда доступна — свяжитесь с нами, чтобы проверить.',
+    'b2b.coverage.map.alt': 'Карта Франции: ZDEPANNAGE в Иль-де-Франс, возможны выезды в Бордо, Марсель, Страсбург, Нант, Тулузу по запросу.',
     'b2b.hero.title': 'Контракты на эвакуацию и ремонт 24/7 для бизнеса в Иль-де-Франс',
     'b2b.hero.subtitle': 'Страховщики, автосалоны, автопарки, больницы. Единый контакт, централизованное выставление счетов, гарантированные сроки.',
     'b2b.hero.cta.primary': 'Запросить расчёт по контракту',

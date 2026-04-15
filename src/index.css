@@ -421,6 +421,11 @@ html { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; f
   100% { transform: translate3d(-1.5%, 1%, 0) scale(1.02); }
 }
 
+@keyframes dashFlow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -16; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-mesh-gradient { animation: none; }
   .timeline-item.reveal.visible .timeline-dot { animation: none; }
