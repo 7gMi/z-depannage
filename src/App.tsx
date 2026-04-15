@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { StickyBar } from './components/layout/StickyBar';
@@ -54,6 +55,7 @@ function AppContent() {
       <Footer phoneDisplay={PHONE_DISPLAY} phoneLink={PHONE_LINK} />
       <ScrollToTopButton />
       <StickyBar phoneLink={PHONE_LINK} phoneDisplay={PHONE_DISPLAY} />
+      <Analytics />
     </div>
   );
 }
