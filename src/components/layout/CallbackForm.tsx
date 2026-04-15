@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, Send } from 'lucide-react';
+import { Phone, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
 
 const PANNE_KEYS = [
@@ -12,23 +12,34 @@ const PANNE_KEYS = [
   'callback.panne.other',
 ];
 
-const WHATSAPP_NUMBER = '33756973686';
+type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 export function CallbackForm() {
   const [phone, setPhone] = useState('');
   const [panne, setPanne] = useState('');
   const [honey, setHoney] = useState('');
-  const { t } = useT();
+  const [status, setStatus] = useState<Status>('idle');
+  const { t, lang } = useT();
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (honey) return; // Bot detected
+    if (status === 'submitting') return;
 
-    const panneText = panne ? t(panne) : 'Non précisé';
-    const message = `Bonjour, je demande un rappel.\n\n📞 Mon numéro : ${phone}\n🔧 Type de panne : ${panneText}\n\nMerci de me rappeler rapidement.`;
-
-    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(waUrl, '_blank', 'noopener,noreferrer');
+    setStatus('submitting');
+    try {
+      const res = await fetch('/api/callback-sms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: phone.trim(), panneType: panne || null, locale: lang }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setStatus('success');
+      setPhone('');
+      setPanne('');
+    } catch {
+      setStatus('error');
+    }
   }
 
   return (
@@ -83,12 +94,47 @@ export function CallbackForm() {
 
             <button
               type="submit"
-              className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-heading font-bold text-lg text-white transition-all duration-200 hover:-translate-y-0.5"
+              disabled={status === 'submitting' || status === 'success'}
+              className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-heading font-bold text-lg text-white transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               style={{ background: 'var(--gradient-cta)', boxShadow: 'var(--shadow-orange)' }}
             >
-              <Send size={18} />
-              {t('callback.submit')}
+              {status === 'submitting' ? (
+                <>
+                  <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  {t('callback.sending')}
+                </>
+              ) : status === 'success' ? (
+                <>
+                  <CheckCircle size={20} />
+                  {t('callback.successShort')}
+                </>
+              ) : (
+                <>
+                  <Send size={18} />
+                  {t('callback.submit')}
+                </>
+              )}
             </button>
+
+            {status === 'success' && (
+              <div className="mt-4 p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-200 text-sm flex items-start gap-3" role="status">
+                <CheckCircle size={20} className="shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-bold mb-1">{t('callback.successTitle')}</p>
+                  <p className="text-green-100/90">{t('callback.successDesc')}</p>
+                </div>
+              </div>
+            )}
+
+            {status === 'error' && (
+              <div className="mt-4 p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-200 text-sm flex items-start gap-3" role="alert">
+                <AlertCircle size={20} className="shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-bold mb-1">{t('callback.errorTitle')}</p>
+                  <p className="text-red-100/90">{t('callback.errorDesc')}</p>
+                </div>
+              </div>
+            )}
           </div>
         </form>
       </div>
