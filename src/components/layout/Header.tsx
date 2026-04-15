@@ -205,12 +205,22 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
             </div>
           </div>
 
-          {/* Tablet/Mobile navbar */}
-          <div className="lg:hidden flex items-center justify-between h-16">
+          {/* Tablet/Mobile navbar — layout 3 zones : hamburger | logo centré (1.5x) | CTA appel */}
+          <div className="lg:hidden relative flex items-center justify-between h-24">
+            {/* Gauche — Hamburger */}
+            <button
+              className="relative z-10 w-11 h-11 flex items-center justify-center text-white"
+              onClick={() => setIsOpen(true)}
+              aria-label={t('aria.openMenu')}
+            >
+              <Menu size={26} />
+            </button>
+
+            {/* Centre — Logo absolute (zoom 1.5x demandé par Dragos) */}
             <Link
               to="/"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center gap-2"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
               aria-label="ZDEPANNAGE — Accueil"
             >
               <img
@@ -218,30 +228,20 @@ export function Header({ phoneDisplay, phoneLink }: { phoneDisplay: string; phon
                 alt="ZDEPANNAGE"
                 width={192}
                 height={192}
-                className="h-[4.5rem] w-auto brightness-0 invert opacity-90"
+                className="h-[6rem] w-auto brightness-0 invert opacity-95"
               />
             </Link>
 
-            <div className="flex items-center gap-3">
-              {/* Pulse SOS — bouton appel circulaire mobile */}
-              <a
-                href={phoneLink}
-                className="relative flex items-center justify-center w-12 h-12 rounded-full text-white shadow-lg"
-                style={{ background: 'var(--gradient-cta)', boxShadow: '0 0 24px rgba(234,88,12,0.6)' }}
-                aria-label={t('aria.call')}
-              >
-                <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-ping opacity-30" />
-                <Phone size={20} className="relative animate-phone-ring" />
-              </a>
-
-              <button
-                className="p-2 text-white"
-                onClick={() => setIsOpen(true)}
-                aria-label={t('aria.openMenu')}
-              >
-                <Menu size={24} />
-              </button>
-            </div>
+            {/* Droite — CTA appel circulaire (icône seule) */}
+            <a
+              href={phoneLink}
+              className="relative z-10 flex items-center justify-center w-11 h-11 rounded-full text-white shadow-lg"
+              style={{ background: 'var(--gradient-cta)', boxShadow: '0 0 24px rgba(234,88,12,0.6)' }}
+              aria-label={`${t('aria.call')} ${phoneDisplay}`}
+            >
+              <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-ping opacity-30" />
+              <Phone size={18} className="relative animate-phone-ring" />
+            </a>
           </div>
         </div>
       </header>
