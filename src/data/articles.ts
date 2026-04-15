@@ -135,7 +135,7 @@ export const ARTICLES: Article[] = [
       "Demandez simplement au dépanneur son numéro d'agrément préfectoral. Vous pouvez aussi vérifier auprès de votre préfecture ou demander à voir l'agrément affiché dans le véhicule de dépannage.",
 
       "## ZDEPANNAGE : agréé et transparent",
-      "Chez ZDEPANNAGE, nous sommes agréés par les forces de l'ordre pour l'Île-de-France. Notre équipe de 4 professionnels intervient 24h/24 avec 3 plateaux dernière génération. Nous appliquons les tarifs réglementés et communiquons toujours le prix exact avant de partir. Appelez-nous au 07 56 97 36 86.",
+      "Chez ZDEPANNAGE, nous sommes agréés par les forces de l'ordre pour l'Île-de-France. Notre équipe de 6 professionnels intervient 24h/24 avec 6 plateaux dernière génération (2 Mercedes Sprinter + 2 Toyota Hilux + 2 Mercedes Atego). Nous appliquons les tarifs réglementés et communiquons toujours le prix exact avant de partir. Appelez-nous au 07 56 97 36 86.",
     ],
   },
   {

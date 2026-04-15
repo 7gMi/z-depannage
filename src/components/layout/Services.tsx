@@ -1,4 +1,4 @@
-import { Truck, Wrench, Car, AlertTriangle, Bike, Warehouse } from 'lucide-react';
+import { Truck, Wrench, Car, AlertTriangle, Bike } from 'lucide-react';
 import { useT } from '../../i18n/LanguageContext';
 import { useTilt } from '../../hooks/useTilt';
 
@@ -27,7 +27,6 @@ const SERVICES_KEYS = [
   { icon: AlertTriangle, titleKey: 'services.accident.title', descKey: 'services.accident.desc' },
   { icon: Car, titleKey: 'services.camper.title', descKey: 'services.camper.desc' },
   { icon: Bike, titleKey: 'services.moto.title', descKey: 'services.moto.desc' },
-  { icon: Warehouse, titleKey: 'services.pound.title', descKey: 'services.pound.desc' },
 ];
 
 export function Services({ limit }: { limit?: number } = {}) {

@@ -1,7 +1,7 @@
 import { Shield, Clock, MapPin, Truck, Users, Award, CheckCircle, Phone, Calendar, FileText, Building2, Briefcase, Hash, Scale, Landmark, ExternalLink } from 'lucide-react';
 import { Stats } from '../components/layout/Stats';
 import { Avis } from '../components/layout/Avis';
-import { InsuranceMarquee } from '../components/layout/InsuranceMarquee';
+// import { InsuranceMarquee } from '../components/layout/InsuranceMarquee'; // Réactiver après signature contrats assurance
 import { CTABanner } from '../components/layout/CTABanner';
 import { PageMeta } from '../components/PageMeta';
 import { useT } from '../i18n/LanguageContext';
@@ -94,7 +94,7 @@ export function AboutPage({ phoneDisplay, phoneLink }: AboutPageProps) {
     <>
       <PageMeta
         title="À propos — Qui sommes-nous | ZDEPANNAGE Grigny (91)"
-        description="ZDEPANNAGE, entreprise familiale de dépannage et remorquage à Grigny (91). Plus de 3 ans d'expérience, 3 véhicules, équipe de 4 professionnels. Agréé assurances et forces de l'ordre."
+        description="ZDEPANNAGE, entreprise familiale de dépannage et remorquage à Grigny (91). Plus de 3 ans d'expérience, 6 véhicules, équipe de 6 professionnels. Agréé assurances et forces de l'ordre."
       />
 
       {/* Hero À propos */}
@@ -349,7 +349,7 @@ export function AboutPage({ phoneDisplay, phoneLink }: AboutPageProps) {
             <source srcSet="/content/atelier.webp" type="image/webp" />
             <img
               src="/content/atelier.webp"
-              alt="L'atelier ZDEPANNAGE à Grigny — Mercedes Classe B et Classe A prêtes à intervenir"
+              alt="L'atelier ZDEPANNAGE à Grigny — flotte de 6 véhicules prête à intervenir 24h/24"
               loading="lazy"
               decoding="async"
               width={1600}
@@ -530,7 +530,8 @@ export function AboutPage({ phoneDisplay, phoneLink }: AboutPageProps) {
         </div>
       </section>
 
-      <InsuranceMarquee />
+      {/* InsuranceMarquee masquée jusqu'à signature de vrais contrats assurance */}
+      {/* <InsuranceMarquee /> */}
       <Stats />
       <Avis />
       <CTABanner phoneDisplay={phoneDisplay} phoneLink={phoneLink} />

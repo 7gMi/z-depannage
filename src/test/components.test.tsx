@@ -27,16 +27,16 @@ describe('Features', () => {
 });
 
 describe('Services', () => {
-  it('renders all 6 services by default', () => {
+  it('renders all 5 services by default', () => {
     render(<Services />, { wrapper: Wrapper });
     expect(screen.getByText('Remorquage automobile')).toBeInTheDocument();
-    expect(screen.getByText('Mise en fourrière')).toBeInTheDocument();
+    expect(screen.getByText('Dépannage moto')).toBeInTheDocument();
   });
 
   it('renders limited services with limit prop', () => {
     render(<Services limit={3} />, { wrapper: Wrapper });
     expect(screen.getByText('Remorquage automobile')).toBeInTheDocument();
-    expect(screen.queryByText('Mise en fourrière')).not.toBeInTheDocument();
+    expect(screen.queryByText('Dépannage moto')).not.toBeInTheDocument();
   });
 });
 
