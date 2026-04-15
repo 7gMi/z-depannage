@@ -90,7 +90,7 @@ export function Avis({ limit }: { limit?: number } = {}) {
 
         <div className="text-center mt-8">
           <a
-            href="https://maps.google.com/?cid=8584249567470174291"
+            href="https://www.google.com/maps/place/ZDEPANNAGE/@48.65731,2.379985,17z/data=!3m1!4b1!4m6!3m5!1s0x60b6f7a85a8a3303:0x772151d9843ac453!8m2!3d48.65731!4d2.3825599!16s%2Fg%2F11x31_0mnt"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-[var(--border-default)] shadow-sm text-sm font-semibold text-[#1967D2] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
