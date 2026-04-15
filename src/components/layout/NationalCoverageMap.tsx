@@ -11,6 +11,8 @@ interface City {
 const CITIES: City[] = [
   { name: 'Lille', pos: [50.6292, 3.0573] },
   { name: 'Brest', pos: [48.3904, -4.4861] },
+  { name: 'Bruxelles', pos: [50.8503, 4.3517] },
+  { name: 'Luxembourg', pos: [49.6116, 6.1319] },
   { name: 'Strasbourg', pos: [48.5734, 7.7521] },
   { name: 'Nantes', pos: [47.2184, -1.5536] },
   { name: 'Lyon', pos: [45.764, 4.8357] },
