@@ -131,9 +131,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Avis
     'avis.title': 'Ce que disent nos clients',
     'avis.google': 'Avis Google',
-    'avis.count': '24 avis',
+    'avis.count': '25 avis',
     'avis.viewAll': 'Voir tous les avis',
-    'avis.viewGoogle': 'Voir les 24 avis sur Google',
+    'avis.viewGoogle': 'Voir les 25 avis sur Google',
 
     // FAQ
     'faq.title': 'Questions fréquentes',
@@ -1123,7 +1123,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'zone.note': 'Response available on highways and express roads — Approved by law enforcement',
     'avis.title': 'What our customers say',
     'avis.google': 'Google Reviews',
-    'avis.count': '24 reviews',
+    'avis.count': '25 reviews',
     'avis.viewAll': 'View all reviews',
     'avis.viewGoogle': 'View all our reviews on Google',
     'faq.title': 'Frequently asked questions',
@@ -1608,7 +1608,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'zone.note': 'Выезд на автомагистрали и скоростные дороги — Аккредитованы силовыми структурами',
     'avis.title': 'Что говорят наши клиенты',
     'avis.google': 'Отзывы Google',
-    'avis.count': '24 отзыва',
+    'avis.count': '25 отзывов',
     'avis.viewAll': 'Все отзывы',
     'avis.viewGoogle': 'Смотреть все наши отзывы на Google',
     'faq.title': 'Часто задаваемые вопросы',

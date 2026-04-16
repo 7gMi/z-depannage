@@ -33,7 +33,7 @@ export function ContactPage({ phoneDisplay, phoneLink }: ContactPageProps) {
     <>
       <PageMeta
         title="Contact & Avis — ZDEPANNAGE Grigny (91)"
-        description="Contactez ZDEPANNAGE au 07 56 97 36 86. 7 BIS Route de Corbeil, 91350 Grigny. 24 avis Google 5 étoiles. Dépannage 24h/24."
+        description="Contactez ZDEPANNAGE au 07 56 97 36 86. 7 BIS Route de Corbeil, 91350 Grigny. 25 avis Google 5 étoiles. Dépannage 24h/24."
       />
 
       {/* ============ HERO HOTLINE ============ */}

@@ -366,7 +366,7 @@ export const ARTICLES: Article[] = [
       "Si vous pensez avoir été victime d'une arnaque :\n\n1. **Conservez tous les documents** (devis, facture, échanges)\n2. **Contactez la DGCCRF** via signal.conso.gouv.fr\n3. **Saisissez votre assureur** s'il a payé la facture\n4. **Déposez plainte** auprès de la police pour escroquerie",
 
       "## ZDEPANNAGE : la transparence avant tout",
-      "Chez ZDEPANNAGE, nous appliquons les tarifs réglementés, fournissons systématiquement un devis écrit et acceptons tous les moyens de paiement. Notre numéro SIRET et notre agrément Police sont affichés sur tous nos véhicules. Plus de 24 avis Google 5 étoiles attestent de notre sérieux. Appelez le **07 56 97 36 86** en toute confiance.",
+      "Chez ZDEPANNAGE, nous appliquons les tarifs réglementés, fournissons systématiquement un devis écrit et acceptons tous les moyens de paiement. Notre numéro SIRET et notre agrément Police sont affichés sur tous nos véhicules. Plus de 25 avis Google 5 étoiles attestent de notre sérieux. Appelez le **07 56 97 36 86** en toute confiance.",
     ],
   },
   {
